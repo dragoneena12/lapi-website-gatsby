@@ -8,13 +8,15 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
+import "typeface-m-plus-rounded-1c"
+import { SiteTitleQuery } from "../../types/graphql-types"
 
 import Header from "./header"
-import "./layout.css"
+import "../style/main.scss"
 
-const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
+const Layout: React.FC = ({ children }) => {
+  const data = useStaticQuery<SiteTitleQuery>(graphql`
+    query SiteTitle {
       site {
         siteMetadata {
           title
@@ -25,7 +27,7 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
+      <Header siteTitle={data.site?.siteMetadata?.title?.toString() || ""} />
       <div
         style={{
           margin: `0 auto`,

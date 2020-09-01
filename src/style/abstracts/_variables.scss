@@ -1,0 +1,20 @@
+$colors: (
+  "primary": #005caf,
+  // Ruri
+  "secondary": #566c73,
+  // Ainezumi
+  "success": #00aa90,
+  //Aomidori
+  "info": #2ea9df,
+  //Tsuyukusa
+  "danger": #c1328e,
+  // Botan
+  "warning": #8b81c3,
+  // Fuji
+  "dark": #08192d,
+  // Kachi
+);
+
+@function colors($key) {
+  @return map-get($colors, $key);
+}
