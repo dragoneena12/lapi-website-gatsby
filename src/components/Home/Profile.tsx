@@ -1,5 +1,5 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 import Img from "gatsby-image"
 import { ProfileIconImageQuery } from "../../../types/graphql-types"
 
@@ -24,7 +24,21 @@ const Profile: React.FC = () => {
 
   return (
     <div className={classes.Profile}>
-      <Img fluid={data.profileIconImage.childImageSharp.fluid} />
+      <Img
+        className={classes.Icon}
+        fluid={data.profileIconImage.childImageSharp.fluid}
+      />
+      <div className={classes.TextContainer}>
+        <h2>るりいろ(lapi-ruriiro)</h2>
+        <Link
+          to="https://twitter.com/dragoneena12"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={classes.TwitterLink}
+        >
+          @dragoneena12
+        </Link>
+      </div>
     </div>
   )
 }
