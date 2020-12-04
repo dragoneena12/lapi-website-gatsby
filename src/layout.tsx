@@ -6,28 +6,15 @@
  */
 
 import React from "react"
-import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
 import "typeface-m-plus-rounded-1c"
-import { SiteTitleQuery } from "../../types/graphql-types"
 
-import Header from "./header"
-import "../style/main.scss"
+import Header from "./components/Header"
+import "./layout.scss"
 
 const Layout: React.FC = ({ children }) => {
-  const data = useStaticQuery<SiteTitleQuery>(graphql`
-    query SiteTitle {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
   return (
     <>
-      <Header siteTitle={data.site?.siteMetadata?.title?.toString() || ""} />
+      <Header />
       <div
         style={{
           margin: `0 auto`,
@@ -44,10 +31,6 @@ const Layout: React.FC = ({ children }) => {
       </div>
     </>
   )
-}
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
 }
 
 export default Layout
