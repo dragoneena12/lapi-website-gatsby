@@ -1,6 +1,13 @@
 .Profile {
-  margin: 20px auto;
+  margin: 8px auto;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.Heading {
+  margin: 32px auto 0 auto;
+  font-size: 3rem;
 }
 
 .Icon {
@@ -14,10 +21,14 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin-left: 32px;
+  margin: 0 32px;
+
+  & > * {
+    margin: 8px 0;
+  }
 }
 
-.TwitterLink {
+.IconLink {
   color: var(--color-link);
   text-decoration: none;
   display: flex;
@@ -29,9 +40,25 @@
     width: 1.5rem;
     margin-right: 0.7rem;
     background-color: #fff;
-    -webkit-mask-image: url(/img/twitter.svg);
     -webkit-mask-size: cover;
-    mask-image: url(/img/twitter.svg);
     mask-size: cover;
+  }
+}
+
+.TwitterLink {
+  composes: IconLink;
+
+  &::before {
+    -webkit-mask-image: url(/img/twitter.svg);
+    mask-image: url(/img/twitter.svg);
+  }
+}
+
+.GithubLink {
+  composes: IconLink;
+
+  &::before {
+    -webkit-mask-image: url(/img/github.svg);
+    mask-image: url(/img/github.svg);
   }
 }
