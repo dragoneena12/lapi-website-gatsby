@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `lapi.gq`,
+    description: `lapi-ruriiro's personal website.`,
+    author: `@dragoneena12`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -34,6 +34,7 @@ module.exports = {
       resolve: "gatsby-plugin-graphql-codegen",
       options: {
         fileName: `types/graphql-types.d.ts`,
+        codegenConfig: { maybeValue: "T | undefined" },
       },
     },
     {

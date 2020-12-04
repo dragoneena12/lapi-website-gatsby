@@ -4,7 +4,9 @@ import classes from "./Footer.module.scss"
 
 const Footer: React.FC = () => (
   <footer className={classes.Footer}>
-    <p>Copyright © 2019-2020 Ruriiro(るりいろ).</p>
+    <p className={classes.Text}>
+      Copyright &copy; 2019-2020 Ruriiro(るりいろ).
+    </p>
   </footer>
 )
 
