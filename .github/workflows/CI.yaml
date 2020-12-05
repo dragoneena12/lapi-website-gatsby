@@ -14,6 +14,6 @@ jobs:
           check-latest: true
       - run: npm ci
       - run: npm run build
-      - run: npm lint-test
-      - run: npm format-test
+      - run: npm run lint-test
+      - run: npm run format-test
       - run: npm test
