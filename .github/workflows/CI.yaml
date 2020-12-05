@@ -13,6 +13,7 @@ jobs:
           node-version: "12"
           check-latest: true
       - run: npm ci
+      - run: npm run build
       - run: npm lint-test
       - run: npm format-test
       - run: npm test
