@@ -1,0 +1,18 @@
+name: CI
+
+on:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v2
+        - uses: actions/setup-node@v2-beta
+          with:
+            node-version: "12"
+            check-latest: true
+        - run: npm ci
+        - run: npm lint-test
+        - run: npm format-test
+        - run: npm test
