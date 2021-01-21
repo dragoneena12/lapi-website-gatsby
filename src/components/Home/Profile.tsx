@@ -11,7 +11,7 @@ const Profile: React.FC = () => {
       profileIconImage: file(relativePath: { eq: "icon.png" }) {
         childImageSharp {
           fluid(maxWidth: 300) {
-            ...GatsbyImageSharpFluid
+            ...GatsbyImageSharpFluid_withWebp_noBase64
           }
         }
       }

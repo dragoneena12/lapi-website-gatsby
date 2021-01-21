@@ -42,6 +42,7 @@ module.exports = {
       options: {
         fileName: `types/graphql-types.d.ts`,
         codegenConfig: { maybeValue: "T | undefined" },
+        // codegen: false,
       },
     },
     {
