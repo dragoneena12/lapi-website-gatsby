@@ -28,20 +28,20 @@
 }
 
 .PictureCrop {
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 75%);
 }
 
 .BoxHeading {
   position: absolute;
   font-size: 2.5rem;
-  bottom: -5%;
+  bottom: -10%;
   left: 5%;
   text-shadow: 2px 0 5px black;
 }
 
 .TextContainer {
   flex: 1;
-  padding: 12px;
+  padding: 24px;
 }
 
 .TextContainer > * {

@@ -21,7 +21,7 @@ const Footer: React.FC = () => (
       </a>
     </div>
     <p className={classes.Text}>
-      Copyright &copy; 2019-2020 Ruriiro(るりいろ).
+      Copyright &copy; 2019-2021 Ruriiro(るりいろ).
     </p>
   </footer>
 )
