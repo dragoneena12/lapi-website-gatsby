@@ -1,0 +1,11 @@
+.Fuwa {
+  opacity: 0;
+  transform: translateY(100px);
+  transition: transform 1s, opacity 1s;
+}
+
+.FuwaActive {
+  composes: Fuwa;
+  opacity: 1;
+  transform: translateY(0);
+}

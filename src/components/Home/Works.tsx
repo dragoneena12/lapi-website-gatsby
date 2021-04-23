@@ -3,6 +3,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 import { WorksImageQuery } from "../../../types/graphql-types"
 
+import Fuwa from "../utils/Fuwa"
 import classes from "./Works.module.scss"
 
 const Works: React.FC = () => {
@@ -32,6 +33,9 @@ const Works: React.FC = () => {
     }
   `)
 
+  if (!data?.jmof2022Image?.childImageSharp?.fluid) {
+    return <div>Picture not found</div>
+  }
   if (!data?.pokerImage?.childImageSharp?.fluid) {
     return <div>Picture not found</div>
   }
@@ -40,95 +44,103 @@ const Works: React.FC = () => {
   }
   return (
     <>
-      <h1 className={classes.Heading}>Works</h1>
+      <Fuwa>
+        <h1 className={classes.Heading}>Works</h1>
+      </Fuwa>
       <div className={classes.Works}>
-        <div className={classes.Box}>
-          <div className={classes.PictureContainer}>
-            <Img
-              fluid={{
-                ...data.jmof2022Image.childImageSharp.fluid,
-                aspectRatio: 1.6,
-              }}
-              className={classes.PictureCrop}
-            />
-            <h2 className={classes.BoxHeading}>JMoF2022</h2>
+        <Fuwa>
+          <div className={classes.Box}>
+            <div className={classes.PictureContainer}>
+              <Img
+                fluid={{
+                  ...data.jmof2022Image.childImageSharp.fluid,
+                  aspectRatio: 1.6,
+                }}
+                className={classes.PictureCrop}
+              />
+              <h2 className={classes.BoxHeading}>JMoF2022</h2>
+            </div>
+            <div className={classes.TextContainer}>
+              <p>公式Webサイトのフロントエンドコーディングを担当しました。</p>
+              <a
+                href="https://www.jmof.jp/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={classes.Link}
+              >
+                Go
+              </a>
+            </div>
           </div>
-          <div className={classes.TextContainer}>
-            <p>公式Webサイトのフロントエンドコーディングを担当しました。</p>
-            <a
-              href="https://www.jmof.jp/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={classes.Link}
-            >
-              Go
-            </a>
+        </Fuwa>
+        <Fuwa>
+          <div className={classes.Box}>
+            <div className={classes.PictureContainer}>
+              <Img
+                fluid={{
+                  ...data.furportImage.childImageSharp.fluid,
+                  aspectRatio: 1.6,
+                }}
+                className={classes.PictureCrop}
+              />
+              <h2 className={classes.BoxHeading}>FurPort</h2>
+            </div>
+            <div className={classes.TextContainer}>
+              <p>ケモノ・Furryイベントの情報をまとめ、記録ができるアプリ。</p>
+              <a
+                href="https://www.furport.tk/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={classes.Link}
+              >
+                Go
+              </a>
+              <a
+                href="https://github.com/lapi-hotel-group/furport-front"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={classes.Link}
+              >
+                Github
+              </a>
+            </div>
           </div>
-        </div>
-        <div className={classes.Box}>
-          <div className={classes.PictureContainer}>
-            <Img
-              fluid={{
-                ...data.furportImage.childImageSharp.fluid,
-                aspectRatio: 1.6,
-              }}
-              className={classes.PictureCrop}
-            />
-            <h2 className={classes.BoxHeading}>FurPort</h2>
+        </Fuwa>
+        <Fuwa>
+          <div className={classes.Box}>
+            <div className={classes.PictureContainer}>
+              <Img
+                fluid={{
+                  ...data.pokerImage.childImageSharp.fluid,
+                  aspectRatio: 1.6,
+                }}
+                className={classes.PictureCrop}
+              />
+              <h2 className={classes.BoxHeading}>Texias Hold&apos;em</h2>
+            </div>
+            <div className={classes.TextContainer}>
+              <p>
+                簡単にテキサスホールデムのネット対戦を楽しめるアプリ。思い出したときにぼちぼち製作中。
+              </p>
+              <a
+                href="https://poker.lapi.gq/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={classes.Link}
+              >
+                Go
+              </a>
+              <a
+                href="https://github.com/dragoneena12/holdem-front"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={classes.Link}
+              >
+                Github
+              </a>
+            </div>
           </div>
-          <div className={classes.TextContainer}>
-            <p>ケモノ・Furryイベントの情報をまとめ、記録ができるアプリ。</p>
-            <a
-              href="https://www.furport.tk/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={classes.Link}
-            >
-              Go
-            </a>
-            <a
-              href="https://github.com/lapi-hotel-group/furport-front"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={classes.Link}
-            >
-              Github
-            </a>
-          </div>
-        </div>
-        <div className={classes.Box}>
-          <div className={classes.PictureContainer}>
-            <Img
-              fluid={{
-                ...data.pokerImage.childImageSharp.fluid,
-                aspectRatio: 1.6,
-              }}
-              className={classes.PictureCrop}
-            />
-            <h2 className={classes.BoxHeading}>Texias Hold&apos;em</h2>
-          </div>
-          <div className={classes.TextContainer}>
-            <p>
-              簡単にテキサスホールデムのネット対戦を楽しめるアプリ。思い出したときにぼちぼち製作中。
-            </p>
-            <a
-              href="https://poker.lapi.gq/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={classes.Link}
-            >
-              Go
-            </a>
-            <a
-              href="https://github.com/dragoneena12/holdem-front"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={classes.Link}
-            >
-              Github
-            </a>
-          </div>
-        </div>
+        </Fuwa>
       </div>
     </>
   )
