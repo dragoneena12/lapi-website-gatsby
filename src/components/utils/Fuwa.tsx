@@ -3,7 +3,7 @@ import { useInView } from "react-intersection-observer"
 
 import classes from "./Fuwa.module.scss"
 
-const Fuwa: React.FC = ({children}) => {
+const Fuwa: React.FC = ({ children }) => {
   const { ref, inView } = useInView()
 
   return (
