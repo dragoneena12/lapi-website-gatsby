@@ -38,14 +38,6 @@ module.exports = {
     `gatsby-plugin-sass`,
     `gatsby-plugin-typescript`,
     {
-      resolve: "gatsby-plugin-graphql-codegen",
-      options: {
-        fileName: `types/graphql-types.d.ts`,
-        codegenConfig: { maybeValue: "T | undefined" },
-        // codegen: false,
-      },
-    },
-    {
       resolve: `gatsby-plugin-layout`,
       options: {
         component: require.resolve(`./src/layout.tsx`),

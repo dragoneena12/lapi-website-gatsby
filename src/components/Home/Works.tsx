@@ -1,13 +1,12 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
-import { WorksImageQuery } from "../../../types/graphql-types"
 
 import Fuwa from "../utils/Fuwa"
 import classes from "./Works.module.scss"
 
 const Works: React.FC = () => {
-  const data = useStaticQuery<WorksImageQuery>(graphql`
+  const data = useStaticQuery(graphql`
     query WorksImage {
       jmof2022Image: file(relativePath: { eq: "jmof2022.png" }) {
         childImageSharp {

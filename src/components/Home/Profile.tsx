@@ -1,13 +1,12 @@
 import React from "react"
 import { useStaticQuery, graphql, Link } from "gatsby"
 import Img from "gatsby-image"
-import { ProfileIconImageQuery } from "../../../types/graphql-types"
 
 import Fuwa from "../utils/Fuwa"
 import classes from "./Profile.module.scss"
 
 const Profile: React.FC = () => {
-  const data = useStaticQuery<ProfileIconImageQuery>(graphql`
+  const data = useStaticQuery(graphql`
     query ProfileIconImage {
       profileIconImage: file(relativePath: { eq: "icon.png" }) {
         childImageSharp {
