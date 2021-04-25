@@ -4,7 +4,9 @@ import { useInView } from "react-intersection-observer"
 import classes from "./Fuwa.module.scss"
 
 const Fuwa: React.FC = ({ children }) => {
-  const { ref, inView } = useInView()
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+  })
 
   return (
     <div ref={ref} className={inView ? classes.FuwaActive : classes.Fuwa}>
