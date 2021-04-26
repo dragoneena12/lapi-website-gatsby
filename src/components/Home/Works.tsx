@@ -19,7 +19,7 @@ const Works: React.FC = () => {
                 alt="jmof2022"
                 placeholder="none"
                 aspectRatio={1.6}
-                transformOptions={{fit: "cover"}}
+                transformOptions={{ fit: "cover" }}
                 className={classes.PictureCrop}
               />
               <h2 className={classes.BoxHeading}>JMoF2022</h2>

@@ -11,7 +11,7 @@ const Profile: React.FC = () => {
       <Fuwa>
         <h1 className={classes.Heading}>About</h1>
         <div className={classes.Profile}>
-          <StaticImage 
+          <StaticImage
             className={classes.Icon}
             src="../../images/icon.png"
             alt="lapi icon"
