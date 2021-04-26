@@ -1,46 +1,10 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
+import { StaticImage } from "gatsby-plugin-image"
 
 import Fuwa from "../utils/Fuwa"
 import classes from "./Works.module.scss"
 
 const Works: React.FC = () => {
-  const data = useStaticQuery(graphql`
-    query WorksImage {
-      jmof2022Image: file(relativePath: { eq: "jmof2022.png" }) {
-        childImageSharp {
-          fluid(maxHeight: 600) {
-            ...GatsbyImageSharpFluid_withWebp_noBase64
-          }
-        }
-      }
-      furportImage: file(relativePath: { eq: "furport.png" }) {
-        childImageSharp {
-          fluid(maxHeight: 600) {
-            ...GatsbyImageSharpFluid_withWebp_noBase64
-          }
-        }
-      }
-      pokerImage: file(relativePath: { eq: "poker.png" }) {
-        childImageSharp {
-          fluid(maxHeight: 600) {
-            ...GatsbyImageSharpFluid_withWebp_noBase64
-          }
-        }
-      }
-    }
-  `)
-
-  if (!data?.jmof2022Image?.childImageSharp?.fluid) {
-    return <div>Picture not found</div>
-  }
-  if (!data?.pokerImage?.childImageSharp?.fluid) {
-    return <div>Picture not found</div>
-  }
-  if (!data?.furportImage?.childImageSharp?.fluid) {
-    return <div>Picture not found</div>
-  }
   return (
     <>
       <Fuwa>
@@ -50,11 +14,12 @@ const Works: React.FC = () => {
         <Fuwa>
           <div className={classes.Box}>
             <div className={classes.PictureContainer}>
-              <Img
-                fluid={{
-                  ...data.jmof2022Image.childImageSharp.fluid,
-                  aspectRatio: 1.6,
-                }}
+              <StaticImage
+                src="../../images/jmof2022.png"
+                alt="jmof2022"
+                placeholder="none"
+                aspectRatio={1.6}
+                transformOptions={{fit: "cover"}}
                 className={classes.PictureCrop}
               />
               <h2 className={classes.BoxHeading}>JMoF2022</h2>
@@ -75,11 +40,11 @@ const Works: React.FC = () => {
         <Fuwa>
           <div className={classes.Box}>
             <div className={classes.PictureContainer}>
-              <Img
-                fluid={{
-                  ...data.furportImage.childImageSharp.fluid,
-                  aspectRatio: 1.6,
-                }}
+              <StaticImage
+                src="../../images/furport.png"
+                alt="furport"
+                placeholder="none"
+                aspectRatio={1.6}
                 className={classes.PictureCrop}
               />
               <h2 className={classes.BoxHeading}>FurPort</h2>
@@ -108,11 +73,11 @@ const Works: React.FC = () => {
         <Fuwa>
           <div className={classes.Box}>
             <div className={classes.PictureContainer}>
-              <Img
-                fluid={{
-                  ...data.pokerImage.childImageSharp.fluid,
-                  aspectRatio: 1.6,
-                }}
+              <StaticImage
+                src="../../images/poker.png"
+                alt="poker"
+                placeholder="none"
+                aspectRatio={1.6}
                 className={classes.PictureCrop}
               />
               <h2 className={classes.BoxHeading}>Texias Hold&apos;em</h2>

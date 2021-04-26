@@ -1,35 +1,21 @@
 import React from "react"
-import { useStaticQuery, graphql, Link } from "gatsby"
-import Img from "gatsby-image"
+import { Link } from "gatsby"
+import { StaticImage } from "gatsby-plugin-image"
 
 import Fuwa from "../utils/Fuwa"
 import classes from "./Profile.module.scss"
 
 const Profile: React.FC = () => {
-  const data = useStaticQuery(graphql`
-    query ProfileIconImage {
-      profileIconImage: file(relativePath: { eq: "icon.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 300) {
-            ...GatsbyImageSharpFluid_withWebp_noBase64
-          }
-        }
-      }
-    }
-  `)
-
-  if (!data?.profileIconImage?.childImageSharp?.fluid) {
-    return <div>Picture not found</div>
-  }
-
   return (
     <>
       <Fuwa>
         <h1 className={classes.Heading}>About</h1>
         <div className={classes.Profile}>
-          <Img
+          <StaticImage 
             className={classes.Icon}
-            fluid={data.profileIconImage.childImageSharp.fluid}
+            src="../../images/icon.png"
+            alt="lapi icon"
+            placeholder="none"
           />
           <div className={classes.TextContainer}>
             <h2>るりいろ(lapi-ruriiro)</h2>
