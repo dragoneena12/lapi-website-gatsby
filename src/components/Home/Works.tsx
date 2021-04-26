@@ -1,15 +1,14 @@
 import React from "react"
 import { StaticImage } from "gatsby-plugin-image"
 
+import Heading from "../common/Heading"
 import Fuwa from "../utils/Fuwa"
 import classes from "./Works.module.scss"
 
 const Works: React.FC = () => {
   return (
     <>
-      <Fuwa>
-        <h1 className={classes.Heading}>Works</h1>
-      </Fuwa>
+      <Heading>Works</Heading>
       <div className={classes.Works}>
         <Fuwa>
           <div className={classes.Box}>

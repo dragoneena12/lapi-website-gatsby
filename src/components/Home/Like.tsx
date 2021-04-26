@@ -1,14 +1,13 @@
 import React from "react"
 
+import Heading from "../common/Heading"
 import Fuwa from "../utils/Fuwa"
 import classes from "./Like.module.scss"
 
 const Like: React.FC = () => {
   return (
     <>
-      <Fuwa>
-        <h1 className={classes.Heading}>Like</h1>
-      </Fuwa>
+      <Heading>Like</Heading>
       <div className={classes.Like}>
         <Fuwa>
           <div className={classes.Box}>

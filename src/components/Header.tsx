@@ -8,6 +8,16 @@ const Header: React.FC = () => (
     <Link to="/" className={classes.TitleText}>
       lapi.gq
     </Link>
+    <Link to="/" className={classes.Link} activeClassName={classes.ActiveLink}>
+      Home
+    </Link>
+    <Link
+      to="/characters"
+      className={classes.Link}
+      activeClassName={classes.ActiveLink}
+    >
+      Characters
+    </Link>
   </header>
 )
 

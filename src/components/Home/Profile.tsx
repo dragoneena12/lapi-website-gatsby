@@ -2,14 +2,15 @@ import React from "react"
 import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 
+import Heading from "../common/Heading"
 import Fuwa from "../utils/Fuwa"
 import classes from "./Profile.module.scss"
 
 const Profile: React.FC = () => {
   return (
     <>
+      <Heading>About</Heading>
       <Fuwa>
-        <h1 className={classes.Heading}>About</h1>
         <div className={classes.Profile}>
           <StaticImage
             className={classes.Icon}
