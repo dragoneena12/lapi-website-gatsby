@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `lapi.gq`,
+    title: `lapi.tokyo`,
     description: `lapi-ruriiro's personal website.`,
     author: `@dragoneena12`,
   },
@@ -26,8 +26,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `lapi.gq`,
-        short_name: `lapi.gq`,
+        name: `lapi.tokyo`,
+        short_name: `lapi.tokyo`,
         start_url: `/`,
         background_color: `#0f2540`,
         theme_color: `#005caf`,

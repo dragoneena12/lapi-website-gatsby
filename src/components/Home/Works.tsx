@@ -86,7 +86,7 @@ const Works: React.FC = () => {
                 簡単にテキサスホールデムのネット対戦を楽しめるアプリ。思い出したときにぼちぼち製作中。
               </p>
               <a
-                href="https://poker.lapi.gq/"
+                href="https://poker.lapi.tokyo/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={classes.Link}

@@ -6,7 +6,7 @@ import classes from "./Header.module.scss"
 const Header: React.FC = () => (
   <header className={classes.Header}>
     <Link to="/" className={classes.TitleText}>
-      lapi.gq
+      lapi.tokyo
     </Link>
     <Link to="/" className={classes.Link} activeClassName={classes.ActiveLink}>
       Home
