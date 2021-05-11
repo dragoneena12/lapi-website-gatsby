@@ -35,7 +35,7 @@ module.exports = {
         icon: `src/images/favicon.svg`, // This path is relative to the root of the site.
       },
     },
-    `gatsby-plugin-offline`,
+    `gatsby-plugin-remove-serviceworker`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-typescript`,
     {
