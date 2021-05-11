@@ -1,7 +1,7 @@
 import React from "react"
 import { useInView } from "react-intersection-observer"
 
-import classes from "./Fuwa.module.scss"
+import * as classes from "./Fuwa.module.scss"
 
 const Fuwa: React.FC = ({ children }) => {
   const { ref, inView } = useInView({

@@ -3,7 +3,7 @@ import { StaticImage } from "gatsby-plugin-image"
 
 import Heading from "../common/Heading"
 import Fuwa from "../utils/Fuwa"
-import classes from "./Works.module.scss"
+import * as classes from "./Works.module.scss"
 
 const Works: React.FC = () => {
   return (

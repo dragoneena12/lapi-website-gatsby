@@ -4,7 +4,7 @@ import { StaticImage } from "gatsby-plugin-image"
 
 import Heading from "../common/Heading"
 import Fuwa from "../utils/Fuwa"
-import classes from "./Profile.module.scss"
+import * as classes from "./Profile.module.scss"
 
 const Profile: React.FC = () => {
   return (

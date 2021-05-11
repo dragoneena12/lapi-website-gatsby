@@ -1,7 +1,7 @@
 import React from "react"
 
 import Fuwa from "../utils/Fuwa"
-import classes from "./Heading.module.scss"
+import * as classes from "./Heading.module.scss"
 
 const Heading: React.FC = ({ children }) => {
   return (

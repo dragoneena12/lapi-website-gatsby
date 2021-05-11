@@ -2,7 +2,7 @@ import React from "react"
 
 import Heading from "../common/Heading"
 import Fuwa from "../utils/Fuwa"
-import classes from "./Like.module.scss"
+import * as classes from "./Like.module.scss"
 
 const Like: React.FC = () => {
   return (

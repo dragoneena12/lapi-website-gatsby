@@ -2,7 +2,7 @@ import React from "react"
 import { StaticImage } from "gatsby-plugin-image"
 
 import Fuwa from "../utils/Fuwa"
-import classes from "./Tsukikusa.module.scss"
+import * as classes from "./Tsukikusa.module.scss"
 const Tsukikusa: React.FC = () => (
   <Fuwa>
     <div className={classes.Container}>

@@ -10,7 +10,7 @@ import "typeface-m-plus-rounded-1c"
 
 import Header from "./components/Header"
 import Footer from "./components/Footer/Footer"
-import classes from "./layout.module.scss"
+import * as classes from "./layout.module.scss"
 import "./layout.scss"
 
 const Layout: React.FC = ({ children }) => {

@@ -3,7 +3,7 @@ import React from "react"
 import Profile from "./Profile"
 import Like from "./Like"
 import Works from "./Works"
-import classes from "./Home.module.scss"
+import * as classes from "./Home.module.scss"
 
 const Home: React.FC = () => (
   <div className={classes.Home}>
