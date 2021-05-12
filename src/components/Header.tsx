@@ -12,7 +12,7 @@ const Header: React.FC = () => (
       Home
     </Link>
     <Link
-      to="/characters"
+      to="/characters/"
       className={classes.Link}
       activeClassName={classes.ActiveLink}
     >
