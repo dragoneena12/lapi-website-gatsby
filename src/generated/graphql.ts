@@ -16,11 +16,13 @@ export type Scalars = {
 };
 
 
+
 export type Hotel = {
   __typename?: 'Hotel';
   id: Scalars['ID'];
   name: Scalars['String'];
   location: Scalars['String'];
+  owner: Scalars['String'];
 };
 
 export type Mutation = {
@@ -51,6 +53,12 @@ export type Query = {
   hotels: Array<Hotel>;
 };
 
+export enum Role {
+  Admin = 'ADMIN',
+  Partner = 'PARTNER',
+  User = 'USER'
+}
+
 export type Stay = {
   __typename?: 'Stay';
   id: Scalars['ID'];
@@ -69,6 +77,20 @@ export type NewHotel = {
   location: Scalars['String'];
 };
 
+export type AddHotelMutationVariables = Exact<{
+  name: Scalars['String'];
+  location: Scalars['String'];
+}>;
+
+
+export type AddHotelMutation = (
+  { __typename?: 'Mutation' }
+  & { addHotel: (
+    { __typename?: 'Hotel' }
+    & Pick<Hotel, 'id' | 'name' | 'location' | 'owner'>
+  ) }
+);
+
 export type FindHotelsQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -76,17 +98,28 @@ export type FindHotelsQuery = (
   { __typename?: 'Query' }
   & { hotels: Array<(
     { __typename?: 'Hotel' }
-    & Pick<Hotel, 'id' | 'name' | 'location'>
+    & Pick<Hotel, 'id' | 'name' | 'location' | 'owner'>
   )> }
 );
 
 
+export const AddHotelDocument = gql`
+    mutation addHotel($name: String!, $location: String!) {
+  addHotel(input: {name: $name, location: $location}) {
+    id
+    name
+    location
+    owner
+  }
+}
+    `;
 export const FindHotelsDocument = gql`
     query findHotels {
   hotels {
     id
     name
     location
+    owner
   }
 }
     `;
@@ -98,6 +131,9 @@ const defaultWrapper: SdkFunctionWrapper = (action, _operationName) => action();
 
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
+    addHotel(variables: AddHotelMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<AddHotelMutation> {
+      return withWrapper((wrappedRequestHeaders) => client.request<AddHotelMutation>(AddHotelDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'addHotel');
+    },
     findHotels(variables?: FindHotelsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<FindHotelsQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<FindHotelsQuery>(FindHotelsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'findHotels');
     }

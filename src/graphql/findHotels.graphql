@@ -3,5 +3,6 @@ query findHotels {
     id
     name
     location
+    owner
   }
 }

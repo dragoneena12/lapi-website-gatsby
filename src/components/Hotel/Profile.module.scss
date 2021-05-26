@@ -57,3 +57,14 @@
     mask-image: url(/img/github.svg);
   }
 }
+
+.RoleContainer {
+  display: flex;
+}
+
+.Role {
+  padding: 4px 12px;
+  margin-right: 8px;
+  background-color: var(--color-primary);
+  border-radius: 24px;
+}

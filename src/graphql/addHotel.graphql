@@ -1,0 +1,8 @@
+mutation addHotel($name: String!, $location: String!) {
+  addHotel(input: { name: $name, location: $location }) {
+    id
+    name
+    location
+    owner
+  }
+}

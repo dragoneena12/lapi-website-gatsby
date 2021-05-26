@@ -1,16 +1,18 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useContext } from "react"
 import { useAuth0 } from "@auth0/auth0-react"
 
 import Heading from "../common/Heading"
 import Fuwa from "../utils/Fuwa"
+import { TokenContext } from "../../Context"
 import Description from "./Description"
 import Profile from "./Profile"
 import HotelList from "./HotelList"
-
+import AddHotel from "./AddHotel"
 import { Container } from "./Hotel.module.scss"
 
 const Hotel: React.FC = () => {
   const { user, getAccessTokenSilently } = useAuth0()
+  const { setToken } = useContext(TokenContext)
 
   useEffect(() => {
     ;(async () => {
@@ -19,26 +21,24 @@ const Hotel: React.FC = () => {
           const token = await getAccessTokenSilently({
             audience: "https://api.lapi.tokyo/v1/",
           })
+          setToken(token)
           console.log(token)
         } catch (e) {
           console.error(e)
         }
       }
     })()
-  }, [user, getAccessTokenSilently])
+  }, [user, getAccessTokenSilently, setToken])
 
   return (
     <div className={Container}>
       <Heading>Hotel System</Heading>
-      <Fuwa>
-        {user ? (
-          <Profile image={user.picture} name={user.name} />
-        ) : (
-          <Description />
-        )}
-      </Fuwa>
+      <Fuwa>{user ? <Profile user={user} /> : <Description />}</Fuwa>
       <Fuwa>
         <HotelList />
+      </Fuwa>
+      <Fuwa>
+        <AddHotel />
       </Fuwa>
     </div>
   )
