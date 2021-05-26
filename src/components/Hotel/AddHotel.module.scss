@@ -1,6 +1,50 @@
 .Container {
+  max-width: 400px;
+  padding: 16px;
   margin: 0 auto;
   display: flex;
   justify-content: center;
   flex-direction: column;
+}
+
+.Input {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 3px;
+  border: 2px solid #fff;
+  box-sizing: border-box;
+}
+
+.TextArea {
+  width: 100%;
+  padding: 15px;
+  padding-bottom: 50px;
+  font-size: 16px;
+  border-radius: 3px;
+  border: 2px solid #fff;
+  box-sizing: border-box;
+}
+
+.Label {
+  margin-top: 8px;
+}
+
+.Button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  color: var(--color-link);
+  border: solid 1px var(--color-link);
+  background-color: transparent;
+  padding: 12px 24px;
+  border-radius: 6px;
+  transition: all 0.2s;
+  cursor: pointer;
+  margin: 32px 0;
+
+  &:hover {
+    background-color: var(--color-link);
+    color: var(--color-text-white);
+  }
 }

@@ -2,9 +2,17 @@ import React, { useContext } from "react"
 import { GraphQLClient } from "graphql-request"
 import { useForm } from "react-hook-form"
 
+import Heading from "../common/Heading"
+import Fuwa from "../utils/Fuwa"
 import { getSdk } from "../../generated/graphql"
 import { TokenContext } from "../../Context"
-import { Container } from "./AddHotel.module.scss"
+import {
+  Container,
+  Input,
+  TextArea,
+  Label,
+  Button,
+} from "./AddHotel.module.scss"
 
 const API_BASE = process.env.GATSBY_API_URL || ""
 
@@ -48,19 +56,68 @@ const AddHotel: React.FC = () => {
 
   return (
     <div className={Container}>
-      <div className={Container}>
-        <h2>新規ホテル追加</h2>
-      </div>
-      <form onSubmit={onSubmit} className={Container}>
-        <input {...register("name", { required: true })} />
-        <input {...register("location", { required: true })} />
-        <textarea {...register("carbonAwards", { required: true })} />
-        <textarea {...register("fullereneAwards", { required: true })} />
-        <textarea {...register("carbonNanotubeAwards", { required: true })} />
-        <textarea {...register("grapheneAwards", { required: true })} />
-        <textarea {...register("diamondAwards", { required: true })} />
-        <input type="submit" />
-      </form>
+      <Heading>新規ホテル追加</Heading>
+      <Fuwa>
+        <form onSubmit={onSubmit} className={Container}>
+          <label htmlFor="name" className={Label}>
+            ホテル名
+          </label>
+          <input
+            id="name"
+            className={Input}
+            {...register("name", { required: true })}
+          />
+          <label htmlFor="location" className={Label}>
+            場所
+          </label>
+          <input
+            id="location"
+            className={Input}
+            {...register("location", { required: true })}
+          />
+          <label htmlFor="carbonAwards" className={Label}>
+            カーボン特典
+          </label>
+          <textarea
+            id="carbonAwards"
+            className={TextArea}
+            {...register("carbonAwards", { required: true })}
+          />
+          <label htmlFor="fullereneAwards" className={Label}>
+            フラーレン特典
+          </label>
+          <textarea
+            id="fullereneAwards"
+            className={TextArea}
+            {...register("fullereneAwards", { required: true })}
+          />
+          <label htmlFor="carbonNanotubeAwards" className={Label}>
+            カーボンナノチューブ特典
+          </label>
+          <textarea
+            id="carbonNanotubeAwards"
+            className={TextArea}
+            {...register("carbonNanotubeAwards", { required: true })}
+          />
+          <label htmlFor="grapheneAwards" className={Label}>
+            グラフェン特典
+          </label>
+          <textarea
+            id="grapheneAwards"
+            className={TextArea}
+            {...register("grapheneAwards", { required: true })}
+          />
+          <label htmlFor="diamondAwards" className={Label}>
+            ダイアモンド特典
+          </label>
+          <textarea
+            id="diamondAwards"
+            className={TextArea}
+            {...register("diamondAwards", { required: true })}
+          />
+          <input type="submit" className={Button} />
+        </form>
+      </Fuwa>
     </div>
   )
 }

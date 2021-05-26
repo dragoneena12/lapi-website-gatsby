@@ -9,7 +9,10 @@ const Logout: React.FC = () => {
   const { logout } = useAuth0()
 
   return (
-    <button className={Button} onClick={() => logout({ returnTo: origin + "/hotel/" })}>
+    <button
+      className={Button}
+      onClick={() => logout({ returnTo: origin + "/hotel/" })}
+    >
       Logout
     </button>
   )

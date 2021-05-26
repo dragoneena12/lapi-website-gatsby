@@ -7,11 +7,10 @@ import { TokenContext } from "../../Context"
 import Description from "./Description"
 import Profile from "./Profile"
 import HotelList from "./HotelList"
-import AddHotel from "./AddHotel"
 import { Container } from "./Hotel.module.scss"
 
 const Hotel: React.FC = () => {
-  const { user, getAccessTokenSilently } = useAuth0()
+  const { user, isAuthenticated, getAccessTokenSilently } = useAuth0()
   const { setToken } = useContext(TokenContext)
 
   useEffect(() => {
@@ -35,10 +34,7 @@ const Hotel: React.FC = () => {
       <Heading>Hotel System</Heading>
       <Fuwa>{user ? <Profile user={user} /> : <Description />}</Fuwa>
       <Fuwa>
-        <HotelList />
-      </Fuwa>
-      <Fuwa>
-        <AddHotel />
+        <HotelList isAuthenticated={isAuthenticated} />
       </Fuwa>
     </div>
   )

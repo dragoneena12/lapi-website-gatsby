@@ -1,0 +1,7 @@
+mutation checkout($hotelId: ID!) {
+  checkout(input: { hotelId: $hotelId }) {
+    id
+    checkin
+    checkout
+  }
+}

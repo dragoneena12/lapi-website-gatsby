@@ -1,164 +1,296 @@
-import { GraphQLClient } from 'graphql-request';
-import * as Dom from 'graphql-request/dist/types.dom';
-import gql from 'graphql-tag';
-export type Maybe<T> = T | null;
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+import { GraphQLClient } from "graphql-request"
+import * as Dom from "graphql-request/dist/types.dom"
+import gql from "graphql-tag"
+export type Maybe<T> = T | null
+export type Exact<T extends { [key: string]: unknown }> = {
+  [K in keyof T]: T[K]
+}
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> &
+  { [SubKey in K]?: Maybe<T[SubKey]> }
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> &
+  { [SubKey in K]: Maybe<T[SubKey]> }
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: string;
-  String: string;
-  Boolean: boolean;
-  Int: number;
-  Float: number;
-  DateTime: any;
-};
-
-
+  ID: string
+  String: string
+  Boolean: boolean
+  Int: number
+  Float: number
+  DateTime: any
+}
 
 export type Hotel = {
-  __typename?: 'Hotel';
-  id: Scalars['ID'];
-  name: Scalars['String'];
-  location: Scalars['String'];
-  owner: Scalars['String'];
-  carbonAwards: Array<Scalars['String']>;
-  fullereneAwards: Array<Scalars['String']>;
-  carbonNanotubeAwards: Array<Scalars['String']>;
-  grapheneAwards: Array<Scalars['String']>;
-  diamondAwards: Array<Scalars['String']>;
-};
+  __typename?: "Hotel"
+  id: Scalars["ID"]
+  name: Scalars["String"]
+  location: Scalars["String"]
+  owner: Scalars["String"]
+  carbonAwards: Array<Scalars["String"]>
+  fullereneAwards: Array<Scalars["String"]>
+  carbonNanotubeAwards: Array<Scalars["String"]>
+  grapheneAwards: Array<Scalars["String"]>
+  diamondAwards: Array<Scalars["String"]>
+}
 
 export type Mutation = {
-  __typename?: 'Mutation';
-  checkin: Stay;
-  checkout: Stay;
-  addHotel: Hotel;
-};
-
+  __typename?: "Mutation"
+  checkin: Stay
+  checkout: Stay
+  addHotel: Hotel
+}
 
 export type MutationCheckinArgs = {
-  input: Check;
-};
-
+  input: Check
+}
 
 export type MutationCheckoutArgs = {
-  input: Check;
-};
-
+  input: Check
+}
 
 export type MutationAddHotelArgs = {
-  input: NewHotel;
-};
+  input: NewHotel
+}
 
 export type Query = {
-  __typename?: 'Query';
-  stays: Array<Stay>;
-  hotels: Array<Hotel>;
-};
+  __typename?: "Query"
+  stays: Array<Stay>
+  hotels: Array<Hotel>
+}
 
 export enum Role {
-  Admin = 'ADMIN',
-  Partner = 'PARTNER',
-  User = 'USER'
+  Admin = "ADMIN",
+  Partner = "PARTNER",
+  User = "USER",
 }
 
 export type Stay = {
-  __typename?: 'Stay';
-  id: Scalars['ID'];
-  hotel: Hotel;
-  checkin: Scalars['DateTime'];
-  checkout: Scalars['DateTime'];
-  user: Scalars['String'];
-};
+  __typename?: "Stay"
+  id: Scalars["ID"]
+  hotel: Hotel
+  checkin: Scalars["DateTime"]
+  checkout: Scalars["DateTime"]
+  user: Scalars["String"]
+}
 
 export type Check = {
-  hotelId: Scalars['ID'];
-};
+  hotelId: Scalars["ID"]
+}
 
 export type NewHotel = {
-  name: Scalars['String'];
-  location: Scalars['String'];
-  carbonAwards: Array<Scalars['String']>;
-  fullereneAwards: Array<Scalars['String']>;
-  carbonNanotubeAwards: Array<Scalars['String']>;
-  grapheneAwards: Array<Scalars['String']>;
-  diamondAwards: Array<Scalars['String']>;
-};
+  name: Scalars["String"]
+  location: Scalars["String"]
+  carbonAwards: Array<Scalars["String"]>
+  fullereneAwards: Array<Scalars["String"]>
+  carbonNanotubeAwards: Array<Scalars["String"]>
+  grapheneAwards: Array<Scalars["String"]>
+  diamondAwards: Array<Scalars["String"]>
+}
 
 export type AddHotelMutationVariables = Exact<{
-  name: Scalars['String'];
-  location: Scalars['String'];
-  carbonAwards: Array<Scalars['String']> | Scalars['String'];
-  fullereneAwards: Array<Scalars['String']> | Scalars['String'];
-  carbonNanotubeAwards: Array<Scalars['String']> | Scalars['String'];
-  grapheneAwards: Array<Scalars['String']> | Scalars['String'];
-  diamondAwards: Array<Scalars['String']> | Scalars['String'];
-}>;
+  name: Scalars["String"]
+  location: Scalars["String"]
+  carbonAwards: Array<Scalars["String"]> | Scalars["String"]
+  fullereneAwards: Array<Scalars["String"]> | Scalars["String"]
+  carbonNanotubeAwards: Array<Scalars["String"]> | Scalars["String"]
+  grapheneAwards: Array<Scalars["String"]> | Scalars["String"]
+  diamondAwards: Array<Scalars["String"]> | Scalars["String"]
+}>
 
+export type AddHotelMutation = { __typename?: "Mutation" } & {
+  addHotel: { __typename?: "Hotel" } & Pick<
+    Hotel,
+    | "id"
+    | "name"
+    | "location"
+    | "owner"
+    | "carbonAwards"
+    | "fullereneAwards"
+    | "carbonNanotubeAwards"
+    | "grapheneAwards"
+    | "diamondAwards"
+  >
+}
 
-export type AddHotelMutation = (
-  { __typename?: 'Mutation' }
-  & { addHotel: (
-    { __typename?: 'Hotel' }
-    & Pick<Hotel, 'id' | 'name' | 'location' | 'owner' | 'carbonAwards' | 'fullereneAwards' | 'carbonNanotubeAwards' | 'grapheneAwards' | 'diamondAwards'>
-  ) }
-);
+export type CheckinMutationVariables = Exact<{
+  hotelId: Scalars["ID"]
+}>
 
-export type FindHotelsQueryVariables = Exact<{ [key: string]: never; }>;
+export type CheckinMutation = { __typename?: "Mutation" } & {
+  checkin: { __typename?: "Stay" } & Pick<Stay, "id" | "checkin" | "checkout">
+}
 
+export type CheckoutMutationVariables = Exact<{
+  hotelId: Scalars["ID"]
+}>
 
-export type FindHotelsQuery = (
-  { __typename?: 'Query' }
-  & { hotels: Array<(
-    { __typename?: 'Hotel' }
-    & Pick<Hotel, 'id' | 'name' | 'location' | 'owner'>
-  )> }
-);
+export type CheckoutMutation = { __typename?: "Mutation" } & {
+  checkout: { __typename?: "Stay" } & Pick<Stay, "id" | "checkin" | "checkout">
+}
 
+export type FindHotelsQueryVariables = Exact<{ [key: string]: never }>
+
+export type FindHotelsQuery = { __typename?: "Query" } & {
+  hotels: Array<
+    { __typename?: "Hotel" } & Pick<Hotel, "id" | "name" | "location" | "owner">
+  >
+}
+
+export type FindMyStaysQueryVariables = Exact<{ [key: string]: never }>
+
+export type FindMyStaysQuery = { __typename?: "Query" } & {
+  stays: Array<
+    { __typename?: "Stay" } & Pick<Stay, "id" | "checkin" | "checkout">
+  >
+}
 
 export const AddHotelDocument = gql`
-    mutation addHotel($name: String!, $location: String!, $carbonAwards: [String!]!, $fullereneAwards: [String!]!, $carbonNanotubeAwards: [String!]!, $grapheneAwards: [String!]!, $diamondAwards: [String!]!) {
-  addHotel(
-    input: {name: $name, location: $location, carbonAwards: $carbonAwards, fullereneAwards: $fullereneAwards, carbonNanotubeAwards: $carbonNanotubeAwards, grapheneAwards: $grapheneAwards, diamondAwards: $diamondAwards}
+  mutation addHotel(
+    $name: String!
+    $location: String!
+    $carbonAwards: [String!]!
+    $fullereneAwards: [String!]!
+    $carbonNanotubeAwards: [String!]!
+    $grapheneAwards: [String!]!
+    $diamondAwards: [String!]!
   ) {
-    id
-    name
-    location
-    owner
-    carbonAwards
-    fullereneAwards
-    carbonNanotubeAwards
-    grapheneAwards
-    diamondAwards
-  }
-}
-    `;
-export const FindHotelsDocument = gql`
-    query findHotels {
-  hotels {
-    id
-    name
-    location
-    owner
-  }
-}
-    `;
-
-export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string) => Promise<T>;
-
-
-const defaultWrapper: SdkFunctionWrapper = (action, _operationName) => action();
-
-export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
-  return {
-    addHotel(variables: AddHotelMutationVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<AddHotelMutation> {
-      return withWrapper((wrappedRequestHeaders) => client.request<AddHotelMutation>(AddHotelDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'addHotel');
-    },
-    findHotels(variables?: FindHotelsQueryVariables, requestHeaders?: Dom.RequestInit["headers"]): Promise<FindHotelsQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<FindHotelsQuery>(FindHotelsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'findHotels');
+    addHotel(
+      input: {
+        name: $name
+        location: $location
+        carbonAwards: $carbonAwards
+        fullereneAwards: $fullereneAwards
+        carbonNanotubeAwards: $carbonNanotubeAwards
+        grapheneAwards: $grapheneAwards
+        diamondAwards: $diamondAwards
+      }
+    ) {
+      id
+      name
+      location
+      owner
+      carbonAwards
+      fullereneAwards
+      carbonNanotubeAwards
+      grapheneAwards
+      diamondAwards
     }
-  };
+  }
+`
+export const CheckinDocument = gql`
+  mutation checkin($hotelId: ID!) {
+    checkin(input: { hotelId: $hotelId }) {
+      id
+      checkin
+      checkout
+    }
+  }
+`
+export const CheckoutDocument = gql`
+  mutation checkout($hotelId: ID!) {
+    checkout(input: { hotelId: $hotelId }) {
+      id
+      checkin
+      checkout
+    }
+  }
+`
+export const FindHotelsDocument = gql`
+  query findHotels {
+    hotels {
+      id
+      name
+      location
+      owner
+    }
+  }
+`
+export const FindMyStaysDocument = gql`
+  query findMyStays {
+    stays {
+      id
+      checkin
+      checkout
+    }
+  }
+`
+
+export type SdkFunctionWrapper = <T>(
+  action: (requestHeaders?: Record<string, string>) => Promise<T>,
+  operationName: string
+) => Promise<T>
+
+const defaultWrapper: SdkFunctionWrapper = (action, _operationName) => action()
+
+export function getSdk(
+  client: GraphQLClient,
+  withWrapper: SdkFunctionWrapper = defaultWrapper
+) {
+  return {
+    addHotel(
+      variables: AddHotelMutationVariables,
+      requestHeaders?: Dom.RequestInit["headers"]
+    ): Promise<AddHotelMutation> {
+      return withWrapper(
+        wrappedRequestHeaders =>
+          client.request<AddHotelMutation>(AddHotelDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        "addHotel"
+      )
+    },
+    checkin(
+      variables: CheckinMutationVariables,
+      requestHeaders?: Dom.RequestInit["headers"]
+    ): Promise<CheckinMutation> {
+      return withWrapper(
+        wrappedRequestHeaders =>
+          client.request<CheckinMutation>(CheckinDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        "checkin"
+      )
+    },
+    checkout(
+      variables: CheckoutMutationVariables,
+      requestHeaders?: Dom.RequestInit["headers"]
+    ): Promise<CheckoutMutation> {
+      return withWrapper(
+        wrappedRequestHeaders =>
+          client.request<CheckoutMutation>(CheckoutDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        "checkout"
+      )
+    },
+    findHotels(
+      variables?: FindHotelsQueryVariables,
+      requestHeaders?: Dom.RequestInit["headers"]
+    ): Promise<FindHotelsQuery> {
+      return withWrapper(
+        wrappedRequestHeaders =>
+          client.request<FindHotelsQuery>(FindHotelsDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        "findHotels"
+      )
+    },
+    findMyStays(
+      variables?: FindMyStaysQueryVariables,
+      requestHeaders?: Dom.RequestInit["headers"]
+    ): Promise<FindMyStaysQuery> {
+      return withWrapper(
+        wrappedRequestHeaders =>
+          client.request<FindMyStaysQuery>(FindMyStaysDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        "findMyStays"
+      )
+    },
+  }
 }
-export type Sdk = ReturnType<typeof getSdk>;
+export type Sdk = ReturnType<typeof getSdk>

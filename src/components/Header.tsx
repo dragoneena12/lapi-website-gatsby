@@ -22,6 +22,7 @@ const Header: React.FC = () => (
       to="/hotel/"
       className={classes.Link}
       activeClassName={classes.ActiveLink}
+      partiallyActive
     >
       Hotel
     </Link>

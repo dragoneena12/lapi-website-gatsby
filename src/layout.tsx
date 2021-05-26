@@ -5,7 +5,7 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React, {useState} from "react"
+import React, { useState } from "react"
 import { Auth0Provider } from "@auth0/auth0-react"
 import "typeface-m-plus-rounded-1c"
 
@@ -21,7 +21,7 @@ const Layout: React.FC = ({ children }) => {
   const [token, setToken] = useState("")
 
   return (
-    <TokenContext.Provider value={{token, setToken}}>
+    <TokenContext.Provider value={{ token, setToken }}>
       <Auth0Provider
         domain="lapi.us.auth0.com"
         clientId="ub3YBp0z2VuVSxa9NY98SJff46FCM4CQ"
