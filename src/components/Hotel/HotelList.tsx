@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import { GraphQLClient } from "graphql-request"
 import { getSdk, Hotel } from "../../generated/graphql"
 
-import { Container } from "./HotelList.module.scss"
+import { Container, CardDeck, HotelCard } from "./HotelList.module.scss"
 
 const API_BASE = process.env.GATSBY_API_URL || ""
 
@@ -19,13 +19,19 @@ const HotelList: React.FC = () => {
 
   return (
     <div className={Container}>
-      <h2>ホテル一覧</h2>
-      {hotels?.map(hotel => (
-        <div key={hotel.id}>
-          <h3>{hotel.name}</h3>
-          <p>{hotel.location}</p>
-        </div>
-      ))}
+      <div className={Container}>
+        <h2>グループホテル一覧</h2>
+      </div>
+      <div className={CardDeck}>
+        {hotels?.map(hotel => (
+          <div key={hotel.id} className={HotelCard}>
+            <div>
+              <h3>{hotel.name}</h3>
+              <p>{hotel.location}</p>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
