@@ -5,6 +5,7 @@ import Heading from "../common/Heading"
 import Fuwa from "../utils/Fuwa"
 import Description from "./Description"
 import Profile from "./Profile"
+import HotelList from "./HotelList"
 
 import { Container } from "./Hotel.module.scss"
 
@@ -30,11 +31,15 @@ const Hotel: React.FC = () => {
     <div className={Container}>
       <Heading>Hotel System</Heading>
       <Fuwa>
-      {user ? (
-        <Profile image={user.picture} name={user.name} />
-      ) : (
-        <Description />
-      )}</Fuwa>
+        {user ? (
+          <Profile image={user.picture} name={user.name} />
+        ) : (
+          <Description />
+        )}
+      </Fuwa>
+      <Fuwa>
+        <HotelList />
+      </Fuwa>
     </div>
   )
 }
