@@ -1,7 +1,7 @@
 import { createContext } from "react"
 
-// eslint-disable-next-line
 export const TokenContext = createContext({
   token: "",
+// eslint-disable-next-line
   setToken: (_: string) => {},
 })
