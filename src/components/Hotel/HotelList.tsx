@@ -7,7 +7,7 @@ import { Container, CardDeck, HotelCard } from "./HotelList.module.scss"
 const API_BASE = process.env.GATSBY_API_URL || ""
 
 const HotelList: React.FC = () => {
-  const [hotels, setHotels] = useState<Hotel[]>()
+  const [hotels, setHotels] = useState<Partial<Hotel>[]>()
   useEffect(() => {
     ;(async () => {
       const client = new GraphQLClient(API_BASE)

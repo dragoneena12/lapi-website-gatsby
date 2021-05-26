@@ -23,6 +23,11 @@ export type Hotel = {
   name: Scalars['String'];
   location: Scalars['String'];
   owner: Scalars['String'];
+  carbonAwards: Array<Scalars['String']>;
+  fullereneAwards: Array<Scalars['String']>;
+  carbonNanotubeAwards: Array<Scalars['String']>;
+  grapheneAwards: Array<Scalars['String']>;
+  diamondAwards: Array<Scalars['String']>;
 };
 
 export type Mutation = {
@@ -75,11 +80,21 @@ export type Check = {
 export type NewHotel = {
   name: Scalars['String'];
   location: Scalars['String'];
+  carbonAwards: Array<Scalars['String']>;
+  fullereneAwards: Array<Scalars['String']>;
+  carbonNanotubeAwards: Array<Scalars['String']>;
+  grapheneAwards: Array<Scalars['String']>;
+  diamondAwards: Array<Scalars['String']>;
 };
 
 export type AddHotelMutationVariables = Exact<{
   name: Scalars['String'];
   location: Scalars['String'];
+  carbonAwards: Array<Scalars['String']> | Scalars['String'];
+  fullereneAwards: Array<Scalars['String']> | Scalars['String'];
+  carbonNanotubeAwards: Array<Scalars['String']> | Scalars['String'];
+  grapheneAwards: Array<Scalars['String']> | Scalars['String'];
+  diamondAwards: Array<Scalars['String']> | Scalars['String'];
 }>;
 
 
@@ -87,7 +102,7 @@ export type AddHotelMutation = (
   { __typename?: 'Mutation' }
   & { addHotel: (
     { __typename?: 'Hotel' }
-    & Pick<Hotel, 'id' | 'name' | 'location' | 'owner'>
+    & Pick<Hotel, 'id' | 'name' | 'location' | 'owner' | 'carbonAwards' | 'fullereneAwards' | 'carbonNanotubeAwards' | 'grapheneAwards' | 'diamondAwards'>
   ) }
 );
 
@@ -104,12 +119,19 @@ export type FindHotelsQuery = (
 
 
 export const AddHotelDocument = gql`
-    mutation addHotel($name: String!, $location: String!) {
-  addHotel(input: {name: $name, location: $location}) {
+    mutation addHotel($name: String!, $location: String!, $carbonAwards: [String!]!, $fullereneAwards: [String!]!, $carbonNanotubeAwards: [String!]!, $grapheneAwards: [String!]!, $diamondAwards: [String!]!) {
+  addHotel(
+    input: {name: $name, location: $location, carbonAwards: $carbonAwards, fullereneAwards: $fullereneAwards, carbonNanotubeAwards: $carbonNanotubeAwards, grapheneAwards: $grapheneAwards, diamondAwards: $diamondAwards}
+  ) {
     id
     name
     location
     owner
+    carbonAwards
+    fullereneAwards
+    carbonNanotubeAwards
+    grapheneAwards
+    diamondAwards
   }
 }
     `;

@@ -11,6 +11,11 @@ const API_BASE = process.env.GATSBY_API_URL || ""
 type FormData = {
   name: string
   location: string
+  carbonAwards: string
+  fullereneAwards: string
+  carbonNanotubeAwards: string
+  grapheneAwards: string
+  diamondAwards: string
 }
 
 const AddHotel: React.FC = () => {
@@ -29,6 +34,11 @@ const AddHotel: React.FC = () => {
         await sdk.addHotel({
           name: data.name,
           location: data.location,
+          carbonAwards: data.carbonAwards.split("\n"),
+          fullereneAwards: data.fullereneAwards.split("\n"),
+          carbonNanotubeAwards: data.carbonNanotubeAwards.split("\n"),
+          grapheneAwards: data.grapheneAwards.split("\n"),
+          diamondAwards: data.diamondAwards.split("\n"),
         })
       } catch (e) {
         console.error(e)
@@ -38,9 +48,17 @@ const AddHotel: React.FC = () => {
 
   return (
     <div className={Container}>
-      <form onSubmit={onSubmit}>
+      <div className={Container}>
+        <h2>新規ホテル追加</h2>
+      </div>
+      <form onSubmit={onSubmit} className={Container}>
         <input {...register("name", { required: true })} />
         <input {...register("location", { required: true })} />
+        <textarea {...register("carbonAwards", { required: true })} />
+        <textarea {...register("fullereneAwards", { required: true })} />
+        <textarea {...register("carbonNanotubeAwards", { required: true })} />
+        <textarea {...register("grapheneAwards", { required: true })} />
+        <textarea {...register("diamondAwards", { required: true })} />
         <input type="submit" />
       </form>
     </div>
