@@ -1,0 +1,17 @@
+.Button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  color: var(--color-link);
+  border: solid 1px var(--color-link);
+  background-color: transparent;
+  padding: 12px 24px;
+  border-radius: 6px;
+  transition: all 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--color-link);
+    color: var(--color-text-white);
+  }
+}

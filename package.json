@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "lapi-ruriiro <tyoutugai.7@gmail.com>",
   "dependencies": {
+    "@auth0/auth0-react": "^1.5.0",
     "gatsby": "^3.5.0",
     "gatsby-plugin-google-analytics": "^3.4.0",
     "gatsby-plugin-image": "^1.4.1",

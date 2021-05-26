@@ -6,6 +6,7 @@
  */
 
 import React from "react"
+import { Auth0Provider } from "@auth0/auth0-react"
 import "typeface-m-plus-rounded-1c"
 
 import Header from "./components/Header"
@@ -15,11 +16,17 @@ import "./layout.scss"
 
 const Layout: React.FC = ({ children }) => {
   return (
-    <div className={classes.layout}>
-      <Header />
-      <main>{children}</main>
-      <Footer />
-    </div>
+    <Auth0Provider
+      domain="lapi.us.auth0.com"
+      clientId="ub3YBp0z2VuVSxa9NY98SJff46FCM4CQ"
+      redirectUri={window.location.origin + "/hotel/"}
+    >
+      <div className={classes.layout}>
+        <Header />
+        <main>{children}</main>
+        <Footer />
+      </div>
+    </Auth0Provider>
   )
 }
 
