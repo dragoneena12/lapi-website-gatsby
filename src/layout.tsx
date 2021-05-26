@@ -14,12 +14,14 @@ import Footer from "./components/Footer/Footer"
 import * as classes from "./layout.module.scss"
 import "./layout.scss"
 
+const origin = process.env.GATSBY_ORIGIN
+
 const Layout: React.FC = ({ children }) => {
   return (
     <Auth0Provider
       domain="lapi.us.auth0.com"
       clientId="ub3YBp0z2VuVSxa9NY98SJff46FCM4CQ"
-      redirectUri={window.location.origin + "/hotel/"}
+      redirectUri={origin + "/hotel/"}
     >
       <div className={classes.layout}>
         <Header />

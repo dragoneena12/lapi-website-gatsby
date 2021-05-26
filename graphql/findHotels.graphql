@@ -1,0 +1,7 @@
+query findHotels {
+  hotels {
+    id
+    name
+    location
+  }
+}

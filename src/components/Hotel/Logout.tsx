@@ -3,11 +3,13 @@ import { useAuth0 } from "@auth0/auth0-react"
 
 import { Button } from "./Login.module.scss"
 
+const origin = process.env.GATSBY_ORIGIN
+
 const Logout: React.FC = () => {
-  const { logout  } = useAuth0()
+  const { logout } = useAuth0()
 
   return (
-    <button className={Button} onClick={() => logout({ returnTo: window.location.origin + "/hotel/" })}>
+    <button className={Button} onClick={() => logout({ returnTo: origin + "/hotel/" })}>
       Logout
     </button>
   )
