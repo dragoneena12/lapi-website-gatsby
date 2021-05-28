@@ -1,5 +1,6 @@
 import React, { useEffect, useContext } from "react"
 import { useAuth0 } from "@auth0/auth0-react"
+import { Spinner } from "css-spinners-react"
 
 import Heading from "../common/Heading"
 import Fuwa from "../utils/Fuwa"
@@ -7,10 +8,11 @@ import { TokenContext } from "../../Context"
 import Description from "./Description"
 import Profile from "./Profile"
 import HotelList from "./HotelList"
-import { Container, Note } from "./Hotel.module.scss"
+import { Container, Note, Loading } from "./Hotel.module.scss"
 
 const Hotel: React.FC = () => {
-  const { user, isAuthenticated, getAccessTokenSilently } = useAuth0()
+  const { user, isAuthenticated, isLoading, getAccessTokenSilently } =
+    useAuth0()
   const { setToken } = useContext(TokenContext)
 
   useEffect(() => {
@@ -36,7 +38,17 @@ const Hotel: React.FC = () => {
           注：現在開発中のため、データは予告なく消えることがあります。
         </p>
       </Fuwa>
-      <Fuwa>{user ? <Profile user={user} /> : <Description />}</Fuwa>
+      <Fuwa>
+        {isLoading ? (
+          <div className={Loading}>
+            <Spinner />
+          </div>
+        ) : user ? (
+          <Profile user={user} />
+        ) : (
+          <Description />
+        )}
+      </Fuwa>
       <Fuwa>
         <HotelList isAuthenticated={isAuthenticated} />
       </Fuwa>
