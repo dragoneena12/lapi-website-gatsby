@@ -72,7 +72,9 @@ const Profile: React.FC<Props> = ({ user }) => {
           <Logout />
         </div>
         <div className={classes.TextContainer}>
-          <p>{`滞在合計：${Math.floor(stayTime / 1000 / 60 / 60 * 100) / 100} 時間`}</p>
+          <p>{`滞在合計：${
+            Math.floor((stayTime / 1000 / 60 / 60) * 100) / 100
+          } 時間`}</p>
           {stays?.map(stay => (
             <p key={stay.id}>{stay.checkin + "-" + stay.checkout}</p>
           ))}
