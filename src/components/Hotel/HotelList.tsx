@@ -10,6 +10,8 @@ import {
   HotelDescription,
   Button,
   ButtonContainer,
+  Success,
+  Error,
 } from "./HotelList.module.scss"
 
 const API_BASE = process.env.GATSBY_API_URL || ""
@@ -20,6 +22,9 @@ type Props = {
 
 const HotelList: React.FC<Props> = ({ isAuthenticated }) => {
   const [hotels, setHotels] = useState<Partial<Hotel>[]>()
+  const [checkedin, setCheckedin] = useState<boolean>(false)
+  const [checkedout, setCheckedout] = useState<boolean>(false)
+  const [err, setErr] = useState<string>("")
   const { token } = useContext(TokenContext)
 
   useEffect(() => {
@@ -43,8 +48,10 @@ const HotelList: React.FC<Props> = ({ isAuthenticated }) => {
         await sdk.checkin({
           hotelId: hotelId,
         })
+        setCheckedin(true)
+        setErr("")
       } catch (e) {
-        console.error(e)
+        setErr(e.response.errors[0].message)
       }
     })()
   }
@@ -60,8 +67,10 @@ const HotelList: React.FC<Props> = ({ isAuthenticated }) => {
         await sdk.checkout({
           hotelId: hotelId,
         })
+        setCheckedout(true)
+        setErr("")
       } catch (e) {
-        console.error(e)
+        setErr(e.response.errors[0].message)
       }
     })()
   }
@@ -82,14 +91,29 @@ const HotelList: React.FC<Props> = ({ isAuthenticated }) => {
             </div>
             {isAuthenticated && (
               <div className={ButtonContainer}>
-                <button className={Button} onClick={() => checkin(hotel.id!)}>
-                  Check In
-                </button>
-                <button className={Button} onClick={() => checkout(hotel.id!)}>
-                  Check Out
-                </button>
+                {checkedin && <p className={Success}>チェックインしました！</p>}
+                {checkedout && (
+                  <p className={Success}>チェックアウトしました！</p>
+                )}
+                {!checkedin && !checkedout && (
+                  <>
+                    <button
+                      className={Button}
+                      onClick={() => checkin(hotel.id!)}
+                    >
+                      Check In
+                    </button>
+                    <button
+                      className={Button}
+                      onClick={() => checkout(hotel.id!)}
+                    >
+                      Check Out
+                    </button>
+                  </>
+                )}
               </div>
             )}
+            {err && <p className={Error}>{err}</p>}
           </div>
         ))}
       </div>

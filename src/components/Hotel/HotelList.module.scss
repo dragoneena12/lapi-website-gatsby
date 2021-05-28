@@ -65,3 +65,26 @@
     color: var(--color-text-white);
   }
 }
+
+.Success {
+  color: var(--color-success);
+  display: flex;
+  align-items: center;
+
+  &::before {
+    content: "";
+    display: inline-block;
+    height: 2rem;
+    width: 2rem;
+    margin-right: 0.7rem;
+    background-color: var(--color-success);
+    -webkit-mask-size: cover;
+    mask-size: cover;
+    -webkit-mask-image: url(/img/checkmark.svg);
+    mask-image: url(/img/checkmark.svg);
+  }
+}
+
+.Error {
+  color: var(--color-danger);
+}

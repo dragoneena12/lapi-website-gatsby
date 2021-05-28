@@ -33,6 +33,19 @@ const Profile: React.FC<Props> = ({ user }) => {
     }
   }, [token])
 
+  let stayTime = 0
+  if (stays) {
+    const zeroDate = new Date("0001-01-01T00:00:00Z")
+    for (const stay of stays) {
+      const checkinDate = new Date(stay.checkin)
+      const checkoutDate = new Date(stay.checkout)
+      if (checkoutDate.getTime() === zeroDate.getTime()) {
+        continue
+      }
+      stayTime += checkoutDate.getTime() - checkinDate.getTime()
+    }
+  }
+
   return (
     <>
       <div className={classes.Profile}>
@@ -59,6 +72,7 @@ const Profile: React.FC<Props> = ({ user }) => {
           <Logout />
         </div>
         <div className={classes.TextContainer}>
+          <p>{`滞在合計：${Math.floor(stayTime / 1000 / 60 / 60 * 100) / 100} 時間`}</p>
           {stays?.map(stay => (
             <p key={stay.id}>{stay.checkin + "-" + stay.checkout}</p>
           ))}
