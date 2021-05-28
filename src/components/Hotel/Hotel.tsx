@@ -21,7 +21,6 @@ const Hotel: React.FC = () => {
             audience: "https://api.lapi.tokyo/v1/",
           })
           setToken(token)
-          console.log(token)
         } catch (e) {
           console.error(e)
         }
