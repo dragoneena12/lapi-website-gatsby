@@ -16,6 +16,7 @@ import * as classes from "./layout.module.scss"
 import "./layout.scss"
 
 const origin = process.env.GATSBY_ORIGIN
+const authClientId = process.env.GATSBY_AUTH_CLIENT_ID || ""
 
 const Layout: React.FC = ({ children }) => {
   const [token, setToken] = useState("")
@@ -24,7 +25,7 @@ const Layout: React.FC = ({ children }) => {
     <TokenContext.Provider value={{ token, setToken }}>
       <Auth0Provider
         domain="lapi.us.auth0.com"
-        clientId="ub3YBp0z2VuVSxa9NY98SJff46FCM4CQ"
+        clientId={authClientId}
         redirectUri={origin + "/hotel/"}
       >
         <div className={classes.layout}>

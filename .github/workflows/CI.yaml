@@ -9,6 +9,7 @@ jobs:
     env:
       GATSBY_ORIGIN: https://www.lapi.tokyo
       GATSBY_API_URL: https://api.lapi.tokyo/v1/graphql
+      GATSBY_AUTH_CLIENT_ID: kf3VdHdPiYSFlJhiBPDIj1cRDezM1Cjo
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2-beta
