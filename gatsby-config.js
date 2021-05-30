@@ -44,5 +44,6 @@ module.exports = {
         component: require.resolve(`./src/layout.tsx`),
       },
     },
+    `gatsby-plugin-use-query-params`,
   ],
 }
