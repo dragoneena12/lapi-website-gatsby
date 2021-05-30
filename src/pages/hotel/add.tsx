@@ -6,7 +6,7 @@ import AddHotel from "../../components/Hotel/AddHotel"
 const AddHotelPage: React.FC = () => (
   <>
     <SEO title="Add Hotel" />
-    <AddHotel />
+    <AddHotel edit={false} />
   </>
 )
 

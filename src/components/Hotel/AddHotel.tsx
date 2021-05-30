@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form"
 
 import Heading from "../common/Heading"
 import Fuwa from "../utils/Fuwa"
-import { getSdk } from "../../generated/graphql"
+import { getSdk, Hotel } from "../../generated/graphql"
 import { TokenContext } from "../../Context"
 import { SpinnerLoader } from "../common/Spinner.module.scss"
 import {
@@ -30,7 +30,12 @@ type FormData = {
   diamondAwards: string
 }
 
-const AddHotel: React.FC = () => {
+type Props = {
+  edit: boolean
+  hotel?: Hotel
+}
+
+const AddHotel: React.FC<Props> = ({ edit, hotel }) => {
   const [isLoading, setIsLoading] = useState(false)
   const [result, setResult] = useState("")
   const [err, setErr] = useState("")
