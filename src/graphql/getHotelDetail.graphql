@@ -1,0 +1,13 @@
+query getHotelDetail($id: ID!) {
+  hotel(id: $id) {
+    id
+    name
+    location
+    owner
+    carbonAwards
+    fullereneAwards
+    carbonNanotubeAwards
+    grapheneAwards
+    diamondAwards
+  }
+}

@@ -3,6 +3,7 @@ import { Link } from "gatsby"
 import { User } from "@auth0/auth0-react"
 import { GraphQLClient } from "graphql-request"
 
+import { SpinnerLoader } from "../common/Spinner.module.scss"
 import { getSdk, Stay } from "../../generated/graphql"
 import { TokenContext } from "../../Context"
 import Logout from "./Logout"
@@ -71,14 +72,18 @@ const Profile: React.FC<Props> = ({ user }) => {
           )}
           <Logout />
         </div>
-        <div className={classes.TextContainer}>
-          <p>{`滞在合計：${
-            Math.floor((stayTime / 1000 / 60 / 60) * 100) / 100
-          } 時間`}</p>
-          {stays?.map(stay => (
-            <p key={stay.id}>{stay.checkin + "-" + stay.checkout}</p>
-          ))}
-        </div>
+        {token ? (
+          <div className={classes.TextContainer}>
+            <p>{`滞在合計：${
+              Math.floor((stayTime / 1000 / 60 / 60) * 100) / 100
+            } 時間`}</p>
+            {stays?.map(stay => (
+              <p key={stay.id}>{stay.checkin + "-" + stay.checkout}</p>
+            ))}
+          </div>
+        ) : (
+          <div className={SpinnerLoader} />
+        )}
       </div>
     </>
   )

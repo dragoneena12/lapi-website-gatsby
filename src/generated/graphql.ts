@@ -37,6 +37,7 @@ export type Mutation = {
   checkin: Stay
   checkout: Stay
   addHotel: Hotel
+  editHotel: Hotel
 }
 
 export type MutationCheckinArgs = {
@@ -51,10 +52,19 @@ export type MutationAddHotelArgs = {
   input: NewHotel
 }
 
+export type MutationEditHotelArgs = {
+  input: EditHotel
+}
+
 export type Query = {
   __typename?: "Query"
   stays: Array<Stay>
   hotels: Array<Hotel>
+  hotel: Hotel
+}
+
+export type QueryHotelArgs = {
+  id: Scalars["ID"]
 }
 
 export enum Role {
@@ -74,6 +84,17 @@ export type Stay = {
 
 export type Check = {
   hotelId: Scalars["ID"]
+}
+
+export type EditHotel = {
+  id: Scalars["ID"]
+  name: Scalars["String"]
+  location: Scalars["String"]
+  carbonAwards: Array<Scalars["String"]>
+  fullereneAwards: Array<Scalars["String"]>
+  carbonNanotubeAwards: Array<Scalars["String"]>
+  grapheneAwards: Array<Scalars["String"]>
+  diamondAwards: Array<Scalars["String"]>
 }
 
 export type NewHotel = {
@@ -127,6 +148,32 @@ export type CheckoutMutation = { __typename?: "Mutation" } & {
   checkout: { __typename?: "Stay" } & Pick<Stay, "id" | "checkin" | "checkout">
 }
 
+export type EditHotelMutationVariables = Exact<{
+  id: Scalars["ID"]
+  name: Scalars["String"]
+  location: Scalars["String"]
+  carbonAwards: Array<Scalars["String"]> | Scalars["String"]
+  fullereneAwards: Array<Scalars["String"]> | Scalars["String"]
+  carbonNanotubeAwards: Array<Scalars["String"]> | Scalars["String"]
+  grapheneAwards: Array<Scalars["String"]> | Scalars["String"]
+  diamondAwards: Array<Scalars["String"]> | Scalars["String"]
+}>
+
+export type EditHotelMutation = { __typename?: "Mutation" } & {
+  editHotel: { __typename?: "Hotel" } & Pick<
+    Hotel,
+    | "id"
+    | "name"
+    | "location"
+    | "owner"
+    | "carbonAwards"
+    | "fullereneAwards"
+    | "carbonNanotubeAwards"
+    | "grapheneAwards"
+    | "diamondAwards"
+  >
+}
+
 export type FindHotelsQueryVariables = Exact<{ [key: string]: never }>
 
 export type FindHotelsQuery = { __typename?: "Query" } & {
@@ -140,6 +187,25 @@ export type FindMyStaysQueryVariables = Exact<{ [key: string]: never }>
 export type FindMyStaysQuery = { __typename?: "Query" } & {
   stays: Array<
     { __typename?: "Stay" } & Pick<Stay, "id" | "checkin" | "checkout">
+  >
+}
+
+export type GetHotelDetailQueryVariables = Exact<{
+  id: Scalars["ID"]
+}>
+
+export type GetHotelDetailQuery = { __typename?: "Query" } & {
+  hotel: { __typename?: "Hotel" } & Pick<
+    Hotel,
+    | "id"
+    | "name"
+    | "location"
+    | "owner"
+    | "carbonAwards"
+    | "fullereneAwards"
+    | "carbonNanotubeAwards"
+    | "grapheneAwards"
+    | "diamondAwards"
   >
 }
 
@@ -194,6 +260,41 @@ export const CheckoutDocument = gql`
     }
   }
 `
+export const EditHotelDocument = gql`
+  mutation editHotel(
+    $id: ID!
+    $name: String!
+    $location: String!
+    $carbonAwards: [String!]!
+    $fullereneAwards: [String!]!
+    $carbonNanotubeAwards: [String!]!
+    $grapheneAwards: [String!]!
+    $diamondAwards: [String!]!
+  ) {
+    editHotel(
+      input: {
+        id: $id
+        name: $name
+        location: $location
+        carbonAwards: $carbonAwards
+        fullereneAwards: $fullereneAwards
+        carbonNanotubeAwards: $carbonNanotubeAwards
+        grapheneAwards: $grapheneAwards
+        diamondAwards: $diamondAwards
+      }
+    ) {
+      id
+      name
+      location
+      owner
+      carbonAwards
+      fullereneAwards
+      carbonNanotubeAwards
+      grapheneAwards
+      diamondAwards
+    }
+  }
+`
 export const FindHotelsDocument = gql`
   query findHotels {
     hotels {
@@ -210,6 +311,21 @@ export const FindMyStaysDocument = gql`
       id
       checkin
       checkout
+    }
+  }
+`
+export const GetHotelDetailDocument = gql`
+  query getHotelDetail($id: ID!) {
+    hotel(id: $id) {
+      id
+      name
+      location
+      owner
+      carbonAwards
+      fullereneAwards
+      carbonNanotubeAwards
+      grapheneAwards
+      diamondAwards
     }
   }
 `
@@ -265,6 +381,19 @@ export function getSdk(
         "checkout"
       )
     },
+    editHotel(
+      variables: EditHotelMutationVariables,
+      requestHeaders?: Dom.RequestInit["headers"]
+    ): Promise<EditHotelMutation> {
+      return withWrapper(
+        wrappedRequestHeaders =>
+          client.request<EditHotelMutation>(EditHotelDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        "editHotel"
+      )
+    },
     findHotels(
       variables?: FindHotelsQueryVariables,
       requestHeaders?: Dom.RequestInit["headers"]
@@ -289,6 +418,20 @@ export function getSdk(
             ...wrappedRequestHeaders,
           }),
         "findMyStays"
+      )
+    },
+    getHotelDetail(
+      variables: GetHotelDetailQueryVariables,
+      requestHeaders?: Dom.RequestInit["headers"]
+    ): Promise<GetHotelDetailQuery> {
+      return withWrapper(
+        wrappedRequestHeaders =>
+          client.request<GetHotelDetailQuery>(
+            GetHotelDetailDocument,
+            variables,
+            { ...requestHeaders, ...wrappedRequestHeaders }
+          ),
+        "getHotelDetail"
       )
     },
   }

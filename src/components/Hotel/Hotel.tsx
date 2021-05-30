@@ -50,7 +50,7 @@ const Hotel: React.FC = () => {
         )}
       </Fuwa>
       <Fuwa>
-        <HotelList isAuthenticated={isAuthenticated} />
+        <HotelList isAuthenticated={isAuthenticated} user={user} />
       </Fuwa>
     </div>
   )

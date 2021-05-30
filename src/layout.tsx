@@ -7,6 +7,7 @@
 
 import React, { useState } from "react"
 import { Auth0Provider } from "@auth0/auth0-react"
+import { QueryParamProvider } from "use-query-params"
 import "typeface-m-plus-rounded-1c"
 
 import { TokenContext } from "./Context"
@@ -27,12 +28,15 @@ const Layout: React.FC = ({ children }) => {
         domain="lapi.us.auth0.com"
         clientId={authClientId}
         redirectUri={origin + "/hotel/"}
+        audience="https://api.lapi.tokyo/v1/"
       >
-        <div className={classes.layout}>
-          <Header />
-          <main>{children}</main>
-          <Footer />
-        </div>
+        <QueryParamProvider>
+          <div className={classes.layout}>
+            <Header />
+            <main>{children}</main>
+            <Footer />
+          </div>
+        </QueryParamProvider>
       </Auth0Provider>
     </TokenContext.Provider>
   )

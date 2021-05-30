@@ -39,11 +39,27 @@ const AddHotel: React.FC<Props> = ({ edit, hotel }) => {
   const [isLoading, setIsLoading] = useState(false)
   const [result, setResult] = useState("")
   const [err, setErr] = useState("")
+  const defaultValues =
+    edit && hotel
+      ? {
+          name: hotel.name,
+          location: hotel.location,
+          carbonAwards: hotel.carbonAwards.join("\n"),
+          fullereneAwards: hotel.fullereneAwards.join("\n"),
+          carbonNanotubeAwards: hotel.carbonNanotubeAwards.join("\n"),
+          grapheneAwards: hotel.grapheneAwards.join("\n"),
+          diamondAwards: hotel.diamondAwards.join("\n"),
+        }
+      : {}
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>({ criteriaMode: "all", mode: "onChange" })
+  } = useForm<FormData>({
+    criteriaMode: "all",
+    mode: "onChange",
+    defaultValues: defaultValues,
+  })
   const { token } = useContext(TokenContext)
 
   const onSubmit = handleSubmit(data => {
@@ -56,15 +72,30 @@ const AddHotel: React.FC<Props> = ({ edit, hotel }) => {
       })
       const sdk = getSdk(client)
       try {
-        await sdk.addHotel({
-          name: data.name,
-          location: data.location,
-          carbonAwards: data.carbonAwards.split("\n"),
-          fullereneAwards: data.fullereneAwards.split("\n"),
-          carbonNanotubeAwards: data.carbonNanotubeAwards.split("\n"),
-          grapheneAwards: data.grapheneAwards.split("\n"),
-          diamondAwards: data.diamondAwards.split("\n"),
-        })
+        if (edit && hotel) {
+          const sendData = {
+            id: hotel.id,
+            name: data.name,
+            location: data.location,
+            carbonAwards: data.carbonAwards.split("\n"),
+            fullereneAwards: data.fullereneAwards.split("\n"),
+            carbonNanotubeAwards: data.carbonNanotubeAwards.split("\n"),
+            grapheneAwards: data.grapheneAwards.split("\n"),
+            diamondAwards: data.diamondAwards.split("\n"),
+          }
+          await sdk.editHotel(sendData)
+        } else {
+          const sendData = {
+            name: data.name,
+            location: data.location,
+            carbonAwards: data.carbonAwards.split("\n"),
+            fullereneAwards: data.fullereneAwards.split("\n"),
+            carbonNanotubeAwards: data.carbonNanotubeAwards.split("\n"),
+            grapheneAwards: data.grapheneAwards.split("\n"),
+            diamondAwards: data.diamondAwards.split("\n"),
+          }
+          await sdk.addHotel(sendData)
+        }
         setIsLoading(false)
         setResult("正常に登録しました！")
         setErr("")
@@ -79,7 +110,7 @@ const AddHotel: React.FC<Props> = ({ edit, hotel }) => {
 
   return (
     <div className={Container}>
-      <Heading>新規ホテル追加</Heading>
+      <Heading>{edit ? "ホテル情報編集" : "新規ホテル追加"}</Heading>
       <Fuwa>
         <form onSubmit={onSubmit} className={Container}>
           <label htmlFor="name" className={Label}>
@@ -162,7 +193,7 @@ const AddHotel: React.FC<Props> = ({ edit, hotel }) => {
           <div className={SubmitContainer}>
             {err && <p className={ErrorText}>{err}</p>}
             {result && <p className={SuccessText}>{result}</p>}
-            {isLoading && <SpinnerLoader />}
+            {isLoading && <div className={SpinnerLoader} />}
             {!isLoading && !result && (
               <input type="submit" className={Button} />
             )}

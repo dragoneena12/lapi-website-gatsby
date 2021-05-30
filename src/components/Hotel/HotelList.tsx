@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useContext } from "react"
+import { Link } from "gatsby"
 import { GraphQLClient } from "graphql-request"
+import { User } from "@auth0/auth0-react"
 import { getSdk, Hotel } from "../../generated/graphql"
 import { TokenContext } from "../../Context"
 
@@ -18,9 +20,10 @@ const API_BASE = process.env.GATSBY_API_URL || ""
 
 type Props = {
   isAuthenticated: boolean
+  user?: User
 }
 
-const HotelList: React.FC<Props> = ({ isAuthenticated }) => {
+const HotelList: React.FC<Props> = ({ isAuthenticated, user }) => {
   const [hotels, setHotels] = useState<Partial<Hotel>[]>()
   const [checkedin, setCheckedin] = useState<boolean>(false)
   const [checkedout, setCheckedout] = useState<boolean>(false)
@@ -114,6 +117,11 @@ const HotelList: React.FC<Props> = ({ isAuthenticated }) => {
               </div>
             )}
             {err && <p className={Error}>{err}</p>}
+            {user?.sub === hotel.owner && (
+              <Link to={"/hotel/edit?id=" + hotel.id} className={Button}>
+                ホテル情報編集
+              </Link>
+            )}
           </div>
         ))}
       </div>
