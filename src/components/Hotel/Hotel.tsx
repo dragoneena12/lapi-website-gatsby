@@ -20,7 +20,7 @@ const Hotel: React.FC = () => {
       if (user) {
         try {
           const token = await getAccessTokenSilently({
-            audience: "https://api.lapi.tokyo/v1/",
+            audience: "https://api.lapi.tokyo/graphql",
           })
           setToken(token)
         } catch (e) {
