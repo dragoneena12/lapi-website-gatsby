@@ -123,7 +123,7 @@ const Profile: React.FC<Props> = ({ user }) => {
               </div>
             </div>
           </div>
-          {stayCount ? (
+          {stayCount !== undefined ? (
             <div className={classes.ProgressContainer}>
               <div id="progressContainer" className={classes.Progress} />
               <p className={classes.ProgressText}>{`現在 ${stayCount} 泊`}</p>
@@ -138,7 +138,7 @@ const Profile: React.FC<Props> = ({ user }) => {
           )}
         </div>
         <div className={classes.ProfileUIContainer}>
-          {stayCount ? (
+          {stayCount !== undefined ? (
             <div className={classes.TextContainer}>
               {Ranks[rank].id === "carbon" ? (
                 <StaticImage
