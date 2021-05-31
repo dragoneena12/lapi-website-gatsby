@@ -64,6 +64,7 @@ export type MutationEditHotelArgs = {
 export type Query = {
   __typename?: "Query"
   stays: Array<Stay>
+  stayCount: Scalars["Int"]
   hotels: Array<Hotel>
   hotel: Hotel
   hotelKey: HotelKey
@@ -194,6 +195,10 @@ export type FindHotelsQuery = { __typename?: "Query" } & {
     { __typename?: "Hotel" } & Pick<Hotel, "id" | "name" | "location" | "owner">
   >
 }
+
+export type StayCountQueryVariables = Exact<{ [key: string]: never }>
+
+export type StayCountQuery = { __typename?: "Query" } & Pick<Query, "stayCount">
 
 export type FindMyStaysQueryVariables = Exact<{ [key: string]: never }>
 
@@ -326,6 +331,11 @@ export const FindHotelsDocument = gql`
     }
   }
 `
+export const StayCountDocument = gql`
+  query stayCount {
+    stayCount
+  }
+`
 export const FindMyStaysDocument = gql`
   query findMyStays {
     stays {
@@ -433,6 +443,19 @@ export function getSdk(
             ...wrappedRequestHeaders,
           }),
         "findHotels"
+      )
+    },
+    stayCount(
+      variables?: StayCountQueryVariables,
+      requestHeaders?: Dom.RequestInit["headers"]
+    ): Promise<StayCountQuery> {
+      return withWrapper(
+        wrappedRequestHeaders =>
+          client.request<StayCountQuery>(StayCountDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        "stayCount"
       )
     },
     findMyStays(
