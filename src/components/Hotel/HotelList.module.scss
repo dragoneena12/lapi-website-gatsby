@@ -43,6 +43,11 @@
   display: flex;
 }
 
+.VerticalButtonContainer {
+  display: flex;
+  flex-direction: column;
+}
+
 .Button {
   -webkit-appearance: none;
   -moz-appearance: none;

@@ -12,6 +12,7 @@ import {
   HotelDescription,
   Button,
   ButtonContainer,
+  VerticalButtonContainer,
   Success,
   Error,
 } from "./HotelList.module.scss"
@@ -127,16 +128,21 @@ const HotelList: React.FC<Props> = ({ isAuthenticated, user }) => {
               </div>
             )}
             {err && <p className={Error}>{err}</p>}
-            {user?.sub === hotel.owner && (
-              <>
-                <Link to={"/hotel/edit?id=" + hotel.id} className={Button}>
-                  ホテル情報編集
-                </Link>
-                <Link to={"/hotel/otp?id=" + hotel.id} className={Button}>
-                  ワンタイムパスワード設定
-                </Link>
-              </>
-            )}
+            <div className={VerticalButtonContainer}>
+              <Link to={"/hotel/detail?id=" + hotel.id} className={Button}>
+                特典内容を見る
+              </Link>
+              {user?.sub === hotel.owner && (
+                <>
+                  <Link to={"/hotel/edit?id=" + hotel.id} className={Button}>
+                    ホテル情報編集
+                  </Link>
+                  <Link to={"/hotel/otp?id=" + hotel.id} className={Button}>
+                    ワンタイムパスワード設定
+                  </Link>
+                </>
+              )}
+            </div>
           </div>
         ))}
       </div>

@@ -10,7 +10,7 @@ import { SpinnerLoader } from "../../components/common/Spinner.module.scss"
 
 const API_BASE = process.env.GATSBY_API_URL || ""
 
-const EditHotelPage: React.FC = () => {
+const OneTimePasswordPage: React.FC = () => {
   const [hotelKey, setHotelKey] = useState<HotelKey | undefined>(undefined)
   const [id] = useQueryParam("id", NumberParam)
   const { token } = useContext(TokenContext)
@@ -35,4 +35,4 @@ const EditHotelPage: React.FC = () => {
   )
 }
 
-export default EditHotelPage
+export default OneTimePasswordPage

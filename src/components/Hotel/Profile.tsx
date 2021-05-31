@@ -22,7 +22,7 @@ type Rank = {
   eoa: boolean
 }
 
-const Ranks: Rank[] = [
+export const Ranks: Rank[] = [
   {
     id: "carbon",
     name: "カーボン",
