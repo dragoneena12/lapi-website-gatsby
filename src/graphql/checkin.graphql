@@ -1,5 +1,5 @@
-mutation checkin($hotelId: ID!) {
-  checkin(input: { hotelId: $hotelId }) {
+mutation checkin($hotelId: ID!, $otp: String!) {
+  checkin(input: { hotelId: $hotelId, otp: $otp }) {
     id
     checkin
     checkout

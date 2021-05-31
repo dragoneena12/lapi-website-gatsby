@@ -32,6 +32,11 @@ export type Hotel = {
   diamondAwards: Array<Scalars["String"]>
 }
 
+export type HotelKey = {
+  __typename?: "HotelKey"
+  key: Scalars["String"]
+}
+
 export type Mutation = {
   __typename?: "Mutation"
   checkin: Stay
@@ -61,9 +66,14 @@ export type Query = {
   stays: Array<Stay>
   hotels: Array<Hotel>
   hotel: Hotel
+  hotelKey: HotelKey
 }
 
 export type QueryHotelArgs = {
+  id: Scalars["ID"]
+}
+
+export type QueryHotelKeyArgs = {
   id: Scalars["ID"]
 }
 
@@ -84,6 +94,7 @@ export type Stay = {
 
 export type Check = {
   hotelId: Scalars["ID"]
+  otp: Scalars["String"]
 }
 
 export type EditHotel = {
@@ -134,6 +145,7 @@ export type AddHotelMutation = { __typename?: "Mutation" } & {
 
 export type CheckinMutationVariables = Exact<{
   hotelId: Scalars["ID"]
+  otp: Scalars["String"]
 }>
 
 export type CheckinMutation = { __typename?: "Mutation" } & {
@@ -142,6 +154,7 @@ export type CheckinMutation = { __typename?: "Mutation" } & {
 
 export type CheckoutMutationVariables = Exact<{
   hotelId: Scalars["ID"]
+  otp: Scalars["String"]
 }>
 
 export type CheckoutMutation = { __typename?: "Mutation" } & {
@@ -209,6 +222,14 @@ export type GetHotelDetailQuery = { __typename?: "Query" } & {
   >
 }
 
+export type GetHotelKeyQueryVariables = Exact<{
+  id: Scalars["ID"]
+}>
+
+export type GetHotelKeyQuery = { __typename?: "Query" } & {
+  hotelKey: { __typename?: "HotelKey" } & Pick<HotelKey, "key">
+}
+
 export const AddHotelDocument = gql`
   mutation addHotel(
     $name: String!
@@ -243,8 +264,8 @@ export const AddHotelDocument = gql`
   }
 `
 export const CheckinDocument = gql`
-  mutation checkin($hotelId: ID!) {
-    checkin(input: { hotelId: $hotelId }) {
+  mutation checkin($hotelId: ID!, $otp: String!) {
+    checkin(input: { hotelId: $hotelId, otp: $otp }) {
       id
       checkin
       checkout
@@ -252,8 +273,8 @@ export const CheckinDocument = gql`
   }
 `
 export const CheckoutDocument = gql`
-  mutation checkout($hotelId: ID!) {
-    checkout(input: { hotelId: $hotelId }) {
+  mutation checkout($hotelId: ID!, $otp: String!) {
+    checkout(input: { hotelId: $hotelId, otp: $otp }) {
       id
       checkin
       checkout
@@ -326,6 +347,13 @@ export const GetHotelDetailDocument = gql`
       carbonNanotubeAwards
       grapheneAwards
       diamondAwards
+    }
+  }
+`
+export const GetHotelKeyDocument = gql`
+  query getHotelKey($id: ID!) {
+    hotelKey(id: $id) {
+      key
     }
   }
 `
@@ -432,6 +460,19 @@ export function getSdk(
             { ...requestHeaders, ...wrappedRequestHeaders }
           ),
         "getHotelDetail"
+      )
+    },
+    getHotelKey(
+      variables: GetHotelKeyQueryVariables,
+      requestHeaders?: Dom.RequestInit["headers"]
+    ): Promise<GetHotelKeyQuery> {
+      return withWrapper(
+        wrappedRequestHeaders =>
+          client.request<GetHotelKeyQuery>(GetHotelKeyDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        "getHotelKey"
       )
     },
   }

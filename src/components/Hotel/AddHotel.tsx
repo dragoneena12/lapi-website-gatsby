@@ -1,17 +1,16 @@
 import React, { useState, useContext } from "react"
+import { Link } from "gatsby"
 import { GraphQLClient } from "graphql-request"
 import { useForm } from "react-hook-form"
 
-import Heading from "../common/Heading"
-import Fuwa from "../utils/Fuwa"
 import { getSdk, Hotel } from "../../generated/graphql"
 import { TokenContext } from "../../Context"
 import { SpinnerLoader } from "../common/Spinner.module.scss"
 import {
   Container,
+  Form,
   Input,
   TextArea,
-  Label,
   SubmitContainer,
   Button,
   ErrorText,
@@ -110,96 +109,83 @@ const AddHotel: React.FC<Props> = ({ edit, hotel }) => {
 
   return (
     <div className={Container}>
-      <Heading>{edit ? "ホテル情報編集" : "新規ホテル追加"}</Heading>
-      <Fuwa>
-        <form onSubmit={onSubmit} className={Container}>
-          <label htmlFor="name" className={Label}>
-            ホテル名
-          </label>
-          <input
-            id="name"
-            className={Input}
-            {...register("name", { required: "この項目は必須です" })}
-          />
-          {errors.name && <p className={ErrorText}>{errors.name.message}</p>}
-          <label htmlFor="location" className={Label}>
-            場所
-          </label>
-          <input
-            id="location"
-            className={Input}
-            {...register("location", { required: "この項目は必須です" })}
-          />
-          {errors.location && (
-            <p className={ErrorText}>{errors.location.message}</p>
+      <h1>{edit ? "ホテル情報編集" : "新規ホテル追加"}</h1>
+      <form onSubmit={onSubmit} className={Form}>
+        <label htmlFor="name">ホテル名</label>
+        <input
+          id="name"
+          className={Input}
+          {...register("name", { required: "この項目は必須です" })}
+        />
+        {errors.name && <p className={ErrorText}>{errors.name.message}</p>}
+        <label htmlFor="location">場所</label>
+        <input
+          id="location"
+          className={Input}
+          {...register("location", { required: "この項目は必須です" })}
+        />
+        {errors.location && (
+          <p className={ErrorText}>{errors.location.message}</p>
+        )}
+        <label htmlFor="carbonAwards">カーボン特典</label>
+        <textarea
+          id="carbonAwards"
+          className={TextArea}
+          {...register("carbonAwards", { required: "この項目は必須です" })}
+        />
+        {errors.carbonAwards && (
+          <p className={ErrorText}>{errors.carbonAwards.message}</p>
+        )}
+        <label htmlFor="fullereneAwards">フラーレン特典</label>
+        <textarea
+          id="fullereneAwards"
+          className={TextArea}
+          {...register("fullereneAwards", { required: "この項目は必須です" })}
+        />
+        {errors.fullereneAwards && (
+          <p className={ErrorText}>{errors.fullereneAwards.message}</p>
+        )}
+        <label htmlFor="carbonNanotubeAwards">カーボンナノチューブ特典</label>
+        <textarea
+          id="carbonNanotubeAwards"
+          className={TextArea}
+          {...register("carbonNanotubeAwards", {
+            required: "この項目は必須です",
+          })}
+        />
+        {errors.carbonNanotubeAwards && (
+          <p className={ErrorText}>{errors.carbonNanotubeAwards.message}</p>
+        )}
+        <label htmlFor="grapheneAwards">グラフェン特典</label>
+        <textarea
+          id="grapheneAwards"
+          className={TextArea}
+          {...register("grapheneAwards", { required: "この項目は必須です" })}
+        />
+        {errors.grapheneAwards && (
+          <p className={ErrorText}>{errors.grapheneAwards.message}</p>
+        )}
+        <label htmlFor="diamondAwards">ダイアモンド特典</label>
+        <textarea
+          id="diamondAwards"
+          className={TextArea}
+          {...register("diamondAwards", { required: "この項目は必須です" })}
+        />
+        {errors.diamondAwards && (
+          <p className={ErrorText}>{errors.diamondAwards.message}</p>
+        )}
+        <div className={SubmitContainer}>
+          {err && <p className={ErrorText}>{err}</p>}
+          {result && <p className={SuccessText}>{result}</p>}
+          {isLoading && <div className={SpinnerLoader} />}
+          {!isLoading && !result && <input type="submit" className={Button} />}
+          {!isLoading && (
+            <Link to="/hotel" className={Button}>
+              戻る
+            </Link>
           )}
-          <label htmlFor="carbonAwards" className={Label}>
-            カーボン特典
-          </label>
-          <textarea
-            id="carbonAwards"
-            className={TextArea}
-            {...register("carbonAwards", { required: "この項目は必須です" })}
-          />
-          {errors.carbonAwards && (
-            <p className={ErrorText}>{errors.carbonAwards.message}</p>
-          )}
-          <label htmlFor="fullereneAwards" className={Label}>
-            フラーレン特典
-          </label>
-          <textarea
-            id="fullereneAwards"
-            className={TextArea}
-            {...register("fullereneAwards", { required: "この項目は必須です" })}
-          />
-          {errors.fullereneAwards && (
-            <p className={ErrorText}>{errors.fullereneAwards.message}</p>
-          )}
-          <label htmlFor="carbonNanotubeAwards" className={Label}>
-            カーボンナノチューブ特典
-          </label>
-          <textarea
-            id="carbonNanotubeAwards"
-            className={TextArea}
-            {...register("carbonNanotubeAwards", {
-              required: "この項目は必須です",
-            })}
-          />
-          {errors.carbonNanotubeAwards && (
-            <p className={ErrorText}>{errors.carbonNanotubeAwards.message}</p>
-          )}
-          <label htmlFor="grapheneAwards" className={Label}>
-            グラフェン特典
-          </label>
-          <textarea
-            id="grapheneAwards"
-            className={TextArea}
-            {...register("grapheneAwards", { required: "この項目は必須です" })}
-          />
-          {errors.grapheneAwards && (
-            <p className={ErrorText}>{errors.grapheneAwards.message}</p>
-          )}
-          <label htmlFor="diamondAwards" className={Label}>
-            ダイアモンド特典
-          </label>
-          <textarea
-            id="diamondAwards"
-            className={TextArea}
-            {...register("diamondAwards", { required: "この項目は必須です" })}
-          />
-          {errors.diamondAwards && (
-            <p className={ErrorText}>{errors.diamondAwards.message}</p>
-          )}
-          <div className={SubmitContainer}>
-            {err && <p className={ErrorText}>{err}</p>}
-            {result && <p className={SuccessText}>{result}</p>}
-            {isLoading && <div className={SpinnerLoader} />}
-            {!isLoading && !result && (
-              <input type="submit" className={Button} />
-            )}
-          </div>
-        </form>
-      </Fuwa>
+        </div>
+      </form>
     </div>
   )
 }
