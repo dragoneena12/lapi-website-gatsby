@@ -77,7 +77,7 @@ const Profile: React.FC<Props> = ({ user }) => {
   }, [token])
 
   useEffect(() => {
-    if (stayCount) {
+    if (stayCount !== undefined) {
       const bar = new SemiCircle("#progressContainer", {
         strokeWidth: 6,
         easing: "easeInOut",
