@@ -7,7 +7,7 @@
 
 import React, { useState } from "react"
 import { Auth0Provider } from "@auth0/auth0-react"
-import "typeface-m-plus-rounded-1c"
+import { Helmet } from "react-helmet"
 
 import { TokenContext } from "./Context"
 import Header from "./components/Header"
@@ -29,6 +29,13 @@ const Layout: React.FC = ({ children }) => {
         redirectUri={origin + "/hotel/"}
         audience="https://api.lapi.tokyo/v1/"
       >
+        <Helmet>
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap"
+            rel="stylesheet"
+          />
+        </Helmet>
         <div className={classes.layout}>
           <Header />
           <main>{children}</main>
