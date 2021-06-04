@@ -79,11 +79,9 @@ const HotelDetail: React.FC<Props> = ({ hotel }) => {
           </div>
         </Fuwa>
       </div>
-      <Fuwa>
-        <Link to="/hotel" className={Button}>
-          戻る
-        </Link>
-      </Fuwa>
+      <Link to="/hotel" className={Button}>
+        戻る
+      </Link>
     </div>
   )
 }
