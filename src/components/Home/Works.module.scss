@@ -1,7 +1,7 @@
 .Works {
   margin: 8px auto;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
 }
 
@@ -26,20 +26,16 @@
 }
 
 .BoxHeading {
-  position: absolute;
-  font-size: 2.5rem;
-  bottom: -10%;
-  left: 5%;
-  text-shadow: 2px 0 5px black;
+  font-size: 2rem;
 }
 
 .TextContainer {
   flex: 1;
-  padding: 24px;
+  padding: 12px;
 }
 
 .TextContainer > * {
-  margin: 16px 0;
+  margin: 8px 0;
 }
 
 .List {
@@ -49,17 +45,145 @@
 .Link {
   width: 80%;
   color: var(--color-link);
-  border: solid 1px var(--color-link);
   padding: 4px;
   border-radius: 10px;
   text-decoration: none;
   display: block;
-  margin: 12px auto;
-  text-align: center;
   transition: 0.4s;
+
+  &:hover {
+    color: var(--color-text);
+  }
 }
 
-.Link:hover {
-  background-color: var(--color-link);
-  color: var(--color-text-white);
+.Languages {
+  display: flex;
+  flex-wrap: wrap;
+
+  & > * {
+    margin: 8px;
+  }
+}
+
+.IconText {
+  display: flex;
+  align-items: center;
+
+  &::before {
+    content: "";
+    display: inline-block;
+    height: 1.5rem;
+    width: 1.5rem;
+    margin-right: 0.3rem;
+    background-color: var(--color-text);
+    -webkit-mask-size: cover;
+    mask-size: cover;
+  }
+
+}
+
+.GithubText {
+  composes: IconText;
+
+  &::before {
+    -webkit-mask-image: url(/img/github.svg);
+    mask-image: url(/img/github.svg);
+  }
+}
+
+.JSText {
+  composes: IconText;
+
+  &::before {
+    background-color: #f7df1e;
+    -webkit-mask-image: url(/img/javascript.svg);
+    mask-image: url(/img/javascript.svg);
+  }
+}
+.TSText {
+  composes: IconText;
+
+  &::before {
+    background-color: #007acc;
+    -webkit-mask-image: url(/img/typescript.svg);
+    mask-image: url(/img/typescript.svg);
+  }
+}
+
+.ReactText {
+  composes: IconText;
+
+  &::before {
+    background-color: #61dafb;
+    -webkit-mask-image: url(/img/react.svg);
+    mask-image: url(/img/react.svg);
+  }
+}
+
+.GatsbyText {
+  composes: IconText;
+
+  &::before {
+    background-color: #639;
+    -webkit-mask-image: url(/img/gatsby.svg);
+    mask-image: url(/img/gatsby.svg);
+  }
+}
+
+.NextText {
+  composes: IconText;
+
+  &::before {
+    -webkit-mask-image: url(/img/next-dot-js.svg);
+    mask-image: url(/img/next-dot-js.svg);
+  }
+}
+
+.GraphqlText {
+  composes: IconText;
+
+  &::before {
+    background-color: #e10098;
+    -webkit-mask-image: url(/img/graphql.svg);
+    mask-image: url(/img/graphql.svg);
+  }
+}
+
+.PythonText {
+  composes: IconText;
+
+  &::before {
+    background-color: #3776ab;
+    -webkit-mask-image: url(/img/python.svg);
+    mask-image: url(/img/python.svg);
+  }
+}
+
+.DjangoText {
+  composes: IconText;
+
+  &::before {
+    -webkit-mask-image: url(/img/django.svg);
+    mask-image: url(/img/django.svg);
+  }
+}
+
+.GoText {
+  composes: IconText;
+
+  &::before {
+    background-color: #00add8;
+    -webkit-mask-image: url(/img/go.svg);
+    mask-image: url(/img/go.svg);
+  }
+}
+
+.Auth0Text {
+  composes: IconText;
+
+  &::before {
+    background-color: #eb5424;
+    -webkit-mask-image: url(/img/auth0.svg);
+    mask-image: url(/img/auth0.svg);
+  }
 }

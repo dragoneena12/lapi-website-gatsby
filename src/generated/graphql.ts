@@ -32,6 +32,11 @@ export type Hotel = {
   diamondAwards: Array<Scalars["String"]>
 }
 
+export type HotelKey = {
+  __typename?: "HotelKey"
+  key: Scalars["String"]
+}
+
 export type Mutation = {
   __typename?: "Mutation"
   checkin: Stay
@@ -59,11 +64,17 @@ export type MutationEditHotelArgs = {
 export type Query = {
   __typename?: "Query"
   stays: Array<Stay>
+  stayCount: Scalars["Int"]
   hotels: Array<Hotel>
   hotel: Hotel
+  hotelKey: HotelKey
 }
 
 export type QueryHotelArgs = {
+  id: Scalars["ID"]
+}
+
+export type QueryHotelKeyArgs = {
   id: Scalars["ID"]
 }
 
@@ -84,6 +95,7 @@ export type Stay = {
 
 export type Check = {
   hotelId: Scalars["ID"]
+  otp: Scalars["String"]
 }
 
 export type EditHotel = {
@@ -134,6 +146,7 @@ export type AddHotelMutation = { __typename?: "Mutation" } & {
 
 export type CheckinMutationVariables = Exact<{
   hotelId: Scalars["ID"]
+  otp: Scalars["String"]
 }>
 
 export type CheckinMutation = { __typename?: "Mutation" } & {
@@ -142,6 +155,7 @@ export type CheckinMutation = { __typename?: "Mutation" } & {
 
 export type CheckoutMutationVariables = Exact<{
   hotelId: Scalars["ID"]
+  otp: Scalars["String"]
 }>
 
 export type CheckoutMutation = { __typename?: "Mutation" } & {
@@ -182,6 +196,10 @@ export type FindHotelsQuery = { __typename?: "Query" } & {
   >
 }
 
+export type StayCountQueryVariables = Exact<{ [key: string]: never }>
+
+export type StayCountQuery = { __typename?: "Query" } & Pick<Query, "stayCount">
+
 export type FindMyStaysQueryVariables = Exact<{ [key: string]: never }>
 
 export type FindMyStaysQuery = { __typename?: "Query" } & {
@@ -207,6 +225,14 @@ export type GetHotelDetailQuery = { __typename?: "Query" } & {
     | "grapheneAwards"
     | "diamondAwards"
   >
+}
+
+export type GetHotelKeyQueryVariables = Exact<{
+  id: Scalars["ID"]
+}>
+
+export type GetHotelKeyQuery = { __typename?: "Query" } & {
+  hotelKey: { __typename?: "HotelKey" } & Pick<HotelKey, "key">
 }
 
 export const AddHotelDocument = gql`
@@ -243,8 +269,8 @@ export const AddHotelDocument = gql`
   }
 `
 export const CheckinDocument = gql`
-  mutation checkin($hotelId: ID!) {
-    checkin(input: { hotelId: $hotelId }) {
+  mutation checkin($hotelId: ID!, $otp: String!) {
+    checkin(input: { hotelId: $hotelId, otp: $otp }) {
       id
       checkin
       checkout
@@ -252,8 +278,8 @@ export const CheckinDocument = gql`
   }
 `
 export const CheckoutDocument = gql`
-  mutation checkout($hotelId: ID!) {
-    checkout(input: { hotelId: $hotelId }) {
+  mutation checkout($hotelId: ID!, $otp: String!) {
+    checkout(input: { hotelId: $hotelId, otp: $otp }) {
       id
       checkin
       checkout
@@ -305,6 +331,11 @@ export const FindHotelsDocument = gql`
     }
   }
 `
+export const StayCountDocument = gql`
+  query stayCount {
+    stayCount
+  }
+`
 export const FindMyStaysDocument = gql`
   query findMyStays {
     stays {
@@ -326,6 +357,13 @@ export const GetHotelDetailDocument = gql`
       carbonNanotubeAwards
       grapheneAwards
       diamondAwards
+    }
+  }
+`
+export const GetHotelKeyDocument = gql`
+  query getHotelKey($id: ID!) {
+    hotelKey(id: $id) {
+      key
     }
   }
 `
@@ -407,6 +445,19 @@ export function getSdk(
         "findHotels"
       )
     },
+    stayCount(
+      variables?: StayCountQueryVariables,
+      requestHeaders?: Dom.RequestInit["headers"]
+    ): Promise<StayCountQuery> {
+      return withWrapper(
+        wrappedRequestHeaders =>
+          client.request<StayCountQuery>(StayCountDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        "stayCount"
+      )
+    },
     findMyStays(
       variables?: FindMyStaysQueryVariables,
       requestHeaders?: Dom.RequestInit["headers"]
@@ -432,6 +483,19 @@ export function getSdk(
             { ...requestHeaders, ...wrappedRequestHeaders }
           ),
         "getHotelDetail"
+      )
+    },
+    getHotelKey(
+      variables: GetHotelKeyQueryVariables,
+      requestHeaders?: Dom.RequestInit["headers"]
+    ): Promise<GetHotelKeyQuery> {
+      return withWrapper(
+        wrappedRequestHeaders =>
+          client.request<GetHotelKeyQuery>(GetHotelKeyDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        "getHotelKey"
       )
     },
   }

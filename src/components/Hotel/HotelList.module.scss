@@ -43,6 +43,11 @@
   display: flex;
 }
 
+.VerticalButtonContainer {
+  display: flex;
+  flex-direction: column;
+}
+
 .Button {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -60,6 +65,7 @@
   line-height: 1.7;
   margin: 8px;
   text-decoration: none;
+  text-align: center;
 
   &:hover {
     background-color: var(--color-link);

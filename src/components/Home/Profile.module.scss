@@ -28,6 +28,8 @@
   text-decoration: none;
   display: flex;
   align-items: center;
+  transition: 0.4s;
+
   &::before {
     content: "";
     display: inline-block;
@@ -37,6 +39,9 @@
     background-color: #fff;
     -webkit-mask-size: cover;
     mask-size: cover;
+  }
+  &:hover {
+    color: var(--color-text);
   }
 }
 

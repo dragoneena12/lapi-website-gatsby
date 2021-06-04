@@ -27,7 +27,7 @@ const Layout: React.FC = ({ children }) => {
         domain="lapi.us.auth0.com"
         clientId={authClientId}
         redirectUri={origin + "/hotel/"}
-        audience="https://api.lapi.tokyo/v1/"
+        audience="https://api.lapi.tokyo/graphql"
       >
         <Helmet>
           <link rel="preconnect" href="https://fonts.gstatic.com" />
