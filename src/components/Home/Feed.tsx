@@ -1,52 +1,59 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import Convert from "xml-js"
 
 import Heading from "../common/Heading"
+import data from "../../../data/feed"
 import { Container, Card, Link } from "./Feed.module.scss"
 
 type Feed = {
-  items: {
-    description: string
-    enclosure: {
-      link: string
+  rss: {
+    channel: {
+      item: {
+        description: {
+          _cdata: string
+        }
+        enclosure: {
+          _attributes: {
+            url: string
+          }
+        }
+        link: {
+          _text: string
+        }
+        title: {
+          _cdata: string
+        }
+        pubDate: {
+          _text: string
+        }
+      }[]
     }
-    link: string
-    title: string
-    pubDate: string
-  }[]
+  }
 }
 
 const Feed: React.FC = () => {
-  const [data, setData] = useState<Feed>()
-  useEffect(() => {
-    fetch("https://zenn.dev/lapi/feed")
-      .then(r => {
-        r.text().then(feed => {
-          const feedJson = Convert.xml2json(feed)
-          const feedObj: Feed = JSON.parse(feedJson)
-          setData(feedObj)
-        })
-      })
-      .catch(e => {
-        console.error(e)
-      })
-  })
+  const feed = Convert.xml2js(data, { compact: true }) as Feed
+  console.log(feed.rss.channel.item)
   return (
     <>
       <Heading>Articles</Heading>
       <div className={Container}>
-        {data?.items.map(item => (
-          <div key={item.title} className={Card}>
+        {feed?.rss.channel.item.map(item => (
+          <div key={item.title._cdata} className={Card}>
             <a
-              href={item.link}
+              href={item.link._text}
               className={Link}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img src={item.enclosure.link} alt={item.title} width="100%" />
-              <h3>{item.title}</h3>
+              <img
+                src={item.enclosure._attributes.url}
+                alt={item.title._cdata}
+                width="100%"
+              />
+              <h3>{item.title._cdata}</h3>
             </a>
-            <p>{new Date(item.pubDate).toDateString()}</p>
+            <p>{new Date(item.pubDate._text).toDateString()}</p>
           </div>
         ))}
       </div>
