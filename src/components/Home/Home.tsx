@@ -3,6 +3,7 @@ import React from "react"
 import Profile from "./Profile"
 import Like from "./Like"
 import Works from "./Works"
+import Feed from "./Feed"
 import * as classes from "./Home.module.scss"
 
 const Home: React.FC = () => (
@@ -10,6 +11,7 @@ const Home: React.FC = () => (
     <Profile />
     <Like />
     <Works />
+    <Feed />
   </div>
 )
 
