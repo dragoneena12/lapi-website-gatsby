@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react"
+import Convert from "xml-js"
 
 import Heading from "../common/Heading"
 import { Container, Card, Link } from "./Feed.module.scss"
 
-type FeedResp = {
+type Feed = {
   items: {
     description: string
     enclosure: {
@@ -16,14 +17,14 @@ type FeedResp = {
 }
 
 const Feed: React.FC = () => {
-  const [data, setData] = useState<FeedResp>()
+  const [data, setData] = useState<Feed>()
   useEffect(() => {
-    fetch(
-      "https://api.rss2json.com/v1/api.json?rss_url=https://zenn.dev/lapi/feed"
-    )
+    fetch("https://zenn.dev/lapi/feed")
       .then(r => {
-        r.json().then((feed: FeedResp) => {
-          setData(feed)
+        r.text().then(feed => {
+          const feedJson = Convert.xml2json(feed)
+          const feedObj: Feed = JSON.parse(feedJson)
+          setData(feedObj)
         })
       })
       .catch(e => {
