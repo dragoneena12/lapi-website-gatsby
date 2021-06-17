@@ -2,7 +2,6 @@ import React, { useEffect, useContext } from "react"
 import { useAuth0 } from "@auth0/auth0-react"
 
 import Heading from "../common/Heading"
-import Fuwa from "../utils/Fuwa"
 import { TokenContext } from "../../Context"
 import { SpinnerLoader } from "../common/Spinner.module.scss"
 import Description from "./Description"
@@ -33,25 +32,22 @@ const Hotel: React.FC = () => {
   return (
     <div className={Container}>
       <Heading>Hotel System</Heading>
-      <Fuwa>
-        <p className={Note}>
-          注：現在開発中のため、データは予告なく消えることがあります。
-        </p>
-      </Fuwa>
-      <Fuwa>
-        {isLoading ? (
-          <div className={Loading}>
-            <div className={SpinnerLoader} />
-          </div>
-        ) : user ? (
-          <Profile user={user} />
-        ) : (
-          <Description />
-        )}
-      </Fuwa>
-      <Fuwa>
-        <HotelList isAuthenticated={isAuthenticated} user={user} />
-      </Fuwa>
+
+      <p className={Note}>
+        注：現在開発中のため、データは予告なく消えることがあります。
+      </p>
+
+      {isLoading ? (
+        <div className={Loading}>
+          <div className={SpinnerLoader} />
+        </div>
+      ) : user ? (
+        <Profile user={user} />
+      ) : (
+        <Description />
+      )}
+
+      <HotelList isAuthenticated={isAuthenticated} user={user} />
     </div>
   )
 }
