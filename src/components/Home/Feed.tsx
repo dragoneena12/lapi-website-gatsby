@@ -33,7 +33,6 @@ type Feed = {
 
 const Feed: React.FC = () => {
   const feed = Convert.xml2js(data, { compact: true }) as Feed
-  console.log(feed.rss.channel.item)
   return (
     <>
       <Heading>Articles</Heading>
