@@ -4,6 +4,7 @@ import { GraphQLClient } from "graphql-request"
 import { User } from "@auth0/auth0-react"
 import { getSdk, Hotel } from "../../generated/graphql"
 import { TokenContext } from "../../Context"
+import { SpinnerLoader } from "../common/Spinner.module.scss"
 
 import {
   Container,
@@ -35,8 +36,12 @@ const HotelList: React.FC<Props> = ({ isAuthenticated, user }) => {
     ;(async () => {
       const client = new GraphQLClient(API_BASE)
       const sdk = getSdk(client)
-      const response = await sdk.findHotels()
-      setHotels(response.hotels)
+      try {
+        const response = await sdk.findHotels()
+        setHotels(response.hotels)
+      } catch (e) {
+        console.error(e)
+      }
     })()
   }, [])
 
@@ -95,6 +100,7 @@ const HotelList: React.FC<Props> = ({ isAuthenticated, user }) => {
         <h2>グループホテル一覧</h2>
       </div>
       <div className={CardDeck}>
+        {!hotels && <div className={SpinnerLoader} />}
         {hotels?.map(hotel => (
           <div key={hotel.id} className={HotelCard}>
             <div className={HotelDescription}>
