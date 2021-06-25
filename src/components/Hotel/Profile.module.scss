@@ -15,11 +15,15 @@
   margin-right: 24px;
 }
 
-.Card {
+.CardBox {
   max-width: 400px;
   border-radius: 10px;
   border: solid 1px #fff;
   margin: 24px 0;
+}
+
+.Card {
+  border-radius: 10px;
 }
 
 .ProfileContainer {

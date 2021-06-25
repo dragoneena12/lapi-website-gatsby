@@ -5,11 +5,17 @@
   justify-content: center;
 }
 
-.Icon {
+.IconBox {
   height: 300px;
   width: 300px;
   border-radius: 50%;
   border: solid 2px #fff;
+}
+
+.Icon {
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
 }
 
 .TextContainer {

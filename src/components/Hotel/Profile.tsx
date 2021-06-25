@@ -142,31 +142,36 @@ const Profile: React.FC<Props> = ({ user }) => {
             <div className={classes.TextContainer}>
               {Ranks[rank].id === "carbon" ? (
                 <StaticImage
-                  className={classes.Card}
+                  className={classes.CardBox}
+                  imgClassName={classes.Card}
                   src="../../images/hotel/card_carbon.png"
                   alt="carbon"
                 />
               ) : Ranks[rank].id === "fullerene" ? (
                 <StaticImage
-                  className={classes.Card}
+                  className={classes.CardBox}
+                  imgClassName={classes.Card}
                   src="../../images/hotel/card_fullerene.png"
                   alt="carbon"
                 />
               ) : Ranks[rank].id === "carbonNanotube" ? (
                 <StaticImage
-                  className={classes.Card}
+                  className={classes.CardBox}
+                  imgClassName={classes.Card}
                   src="../../images/hotel/card_carbonNanotube.png"
                   alt="carbon"
                 />
               ) : Ranks[rank].id === "graphene" ? (
                 <StaticImage
-                  className={classes.Card}
+                  className={classes.CardBox}
+                  imgClassName={classes.Card}
                   src="../../images/hotel/card_graphene.png"
                   alt="carbon"
                 />
               ) : Ranks[rank].id === "diamond" ? (
                 <StaticImage
-                  className={classes.Card}
+                  className={classes.CardBox}
+                  imgClassName={classes.Card}
                   src="../../images/hotel/card_diamond.png"
                   alt="carbon"
                 />

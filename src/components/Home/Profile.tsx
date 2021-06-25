@@ -12,7 +12,8 @@ const Profile: React.FC = () => {
 
       <div className={classes.Profile}>
         <StaticImage
-          className={classes.Icon}
+          className={classes.IconBox}
+          imgClassName={classes.Icon}
           src="../../images/icon.png"
           alt="lapi icon"
           placeholder="none"
