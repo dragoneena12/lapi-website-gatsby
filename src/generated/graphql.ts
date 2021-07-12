@@ -204,7 +204,9 @@ export type FindMyStaysQueryVariables = Exact<{ [key: string]: never }>
 
 export type FindMyStaysQuery = { __typename?: "Query" } & {
   stays: Array<
-    { __typename?: "Stay" } & Pick<Stay, "id" | "checkin" | "checkout">
+    { __typename?: "Stay" } & Pick<Stay, "id" | "checkin" | "checkout"> & {
+        hotel: { __typename?: "Hotel" } & Pick<Hotel, "name">
+      }
   >
 }
 
@@ -340,6 +342,9 @@ export const FindMyStaysDocument = gql`
   query findMyStays {
     stays {
       id
+      hotel {
+        name
+      }
       checkin
       checkout
     }

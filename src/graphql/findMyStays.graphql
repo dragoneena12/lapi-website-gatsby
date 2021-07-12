@@ -1,6 +1,9 @@
 query findMyStays {
   stays {
     id
+    hotel {
+      name
+    }
     checkin
     checkout
   }

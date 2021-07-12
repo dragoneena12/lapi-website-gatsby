@@ -7,7 +7,7 @@ import { SpinnerLoader } from "../common/Spinner.module.scss"
 import Description from "./Description"
 import Profile from "./Profile"
 import HotelList from "./HotelList"
-import { Container, Note, Loading } from "./Hotel.module.scss"
+import { Container, Loading } from "./Hotel.module.scss"
 
 const Hotel: React.FC = () => {
   const { user, isAuthenticated, isLoading, getAccessTokenSilently } =
@@ -32,10 +32,6 @@ const Hotel: React.FC = () => {
   return (
     <div className={Container}>
       <Heading>Hotel System</Heading>
-
-      <p className={Note}>
-        注：現在開発中のため、データは予告なく消えることがあります。
-      </p>
 
       {isLoading ? (
         <div className={Loading}>

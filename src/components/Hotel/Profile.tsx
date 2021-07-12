@@ -139,47 +139,52 @@ const Profile: React.FC<Props> = ({ user }) => {
         </div>
         <div className={classes.ProfileUIContainer}>
           {stayCount !== undefined ? (
-            <div className={classes.TextContainer}>
-              {Ranks[rank].id === "carbon" ? (
-                <StaticImage
-                  className={classes.CardBox}
-                  imgClassName={classes.Card}
-                  src="../../images/hotel/card_carbon.png"
-                  alt="carbon"
-                />
-              ) : Ranks[rank].id === "fullerene" ? (
-                <StaticImage
-                  className={classes.CardBox}
-                  imgClassName={classes.Card}
-                  src="../../images/hotel/card_fullerene.png"
-                  alt="carbon"
-                />
-              ) : Ranks[rank].id === "carbonNanotube" ? (
-                <StaticImage
-                  className={classes.CardBox}
-                  imgClassName={classes.Card}
-                  src="../../images/hotel/card_carbonNanotube.png"
-                  alt="carbon"
-                />
-              ) : Ranks[rank].id === "graphene" ? (
-                <StaticImage
-                  className={classes.CardBox}
-                  imgClassName={classes.Card}
-                  src="../../images/hotel/card_graphene.png"
-                  alt="carbon"
-                />
-              ) : Ranks[rank].id === "diamond" ? (
-                <StaticImage
-                  className={classes.CardBox}
-                  imgClassName={classes.Card}
-                  src="../../images/hotel/card_diamond.png"
-                  alt="carbon"
-                />
-              ) : null}
-            </div>
+            <>
+              <div className={classes.TextContainer}>
+                {Ranks[rank].id === "carbon" ? (
+                  <StaticImage
+                    className={classes.CardBox}
+                    imgClassName={classes.Card}
+                    src="../../images/hotel/card_carbon.png"
+                    alt="carbon"
+                  />
+                ) : Ranks[rank].id === "fullerene" ? (
+                  <StaticImage
+                    className={classes.CardBox}
+                    imgClassName={classes.Card}
+                    src="../../images/hotel/card_fullerene.png"
+                    alt="carbon"
+                  />
+                ) : Ranks[rank].id === "carbonNanotube" ? (
+                  <StaticImage
+                    className={classes.CardBox}
+                    imgClassName={classes.Card}
+                    src="../../images/hotel/card_carbonNanotube.png"
+                    alt="carbon"
+                  />
+                ) : Ranks[rank].id === "graphene" ? (
+                  <StaticImage
+                    className={classes.CardBox}
+                    imgClassName={classes.Card}
+                    src="../../images/hotel/card_graphene.png"
+                    alt="carbon"
+                  />
+                ) : Ranks[rank].id === "diamond" ? (
+                  <StaticImage
+                    className={classes.CardBox}
+                    imgClassName={classes.Card}
+                    src="../../images/hotel/card_diamond.png"
+                    alt="carbon"
+                  />
+                ) : null}
+              </div>
+            </>
           ) : (
             <div className={SpinnerLoader} />
           )}
+          <Link to="/hotel/history" className={classes.Button}>
+            宿泊履歴を見る
+          </Link>
           {user["https://lapi.tokyo/claims/roles"].includes("PARTNER") && (
             <Link to="/hotel/add" className={classes.Button}>
               新規ホテル追加
