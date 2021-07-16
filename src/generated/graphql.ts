@@ -95,7 +95,7 @@ export type Stay = {
 
 export type Check = {
   hotelId: Scalars["ID"]
-  otp: Scalars["String"]
+  otp?: Maybe<Scalars["String"]>
 }
 
 export type EditHotel = {

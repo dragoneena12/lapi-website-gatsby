@@ -70,10 +70,10 @@ const HotelList: React.FC<Props> = ({ isAuthenticated, user }) => {
     })()
   }
   const checkout = (hotelId: string) => {
-    const otp = window.prompt("ワンタイムパスワードを入力してください", "")
-    if (otp === null) {
-      return
-    }
+    // const otp = window.prompt("ワンタイムパスワードを入力してください", "")
+    // if (otp === null) {
+    //   return
+    // }
     ;(async () => {
       const client = new GraphQLClient(API_BASE, {
         headers: {
@@ -84,7 +84,7 @@ const HotelList: React.FC<Props> = ({ isAuthenticated, user }) => {
       try {
         await sdk.checkout({
           hotelId: hotelId,
-          otp: otp,
+          otp: "",
         })
         setCheckedout(true)
         setErr("")
