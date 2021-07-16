@@ -28,6 +28,7 @@ const Layout: React.FC = ({ children }) => {
         clientId={authClientId}
         redirectUri={origin + "/hotel/"}
         audience="https://api.lapi.tokyo/graphql"
+        useRefreshTokens={true}
       >
         <Helmet>
           <link rel="preconnect" href="https://fonts.gstatic.com" />
