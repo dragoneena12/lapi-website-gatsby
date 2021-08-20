@@ -16,15 +16,13 @@ const Hotel: React.FC = () => {
 
   useEffect(() => {
     ;(async () => {
-      if (isAuthenticated) {
-        try {
-          const token = await getAccessTokenSilently({
-            audience: "https://api.lapi.tokyo/graphql",
-          })
-          setToken(token)
-        } catch (e) {
-          console.error(e)
-        }
+      try {
+        const token = await getAccessTokenSilently({
+          audience: "https://api.lapi.tokyo/graphql",
+        })
+        setToken(token)
+      } catch (e) {
+        console.error(e)
       }
     })()
   }, [isAuthenticated, getAccessTokenSilently, setToken])
