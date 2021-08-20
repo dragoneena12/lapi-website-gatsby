@@ -16,7 +16,7 @@ const Hotel: React.FC = () => {
 
   useEffect(() => {
     ;(async () => {
-      if (user) {
+      if (isAuthenticated) {
         try {
           const token = await getAccessTokenSilently({
             audience: "https://api.lapi.tokyo/graphql",
@@ -27,7 +27,7 @@ const Hotel: React.FC = () => {
         }
       }
     })()
-  }, [user, getAccessTokenSilently, setToken])
+  }, [isAuthenticated, getAccessTokenSilently, setToken])
 
   return (
     <div className={Container}>
