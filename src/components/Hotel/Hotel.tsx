@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react"
+import React, { useState, useEffect, useContext } from "react"
 import { useAuth0 } from "@auth0/auth0-react"
 
 import Heading from "../common/Heading"
@@ -10,9 +10,9 @@ import HotelList from "./HotelList"
 import { Container, Loading } from "./Hotel.module.scss"
 
 const Hotel: React.FC = () => {
-  const { user, isAuthenticated, isLoading, getAccessTokenSilently } =
-    useAuth0()
+  const { user, isAuthenticated, getAccessTokenSilently } = useAuth0()
   const { setToken } = useContext(TokenContext)
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     ;(async () => {
@@ -21,8 +21,10 @@ const Hotel: React.FC = () => {
           audience: "https://api.lapi.tokyo/graphql",
         })
         setToken(token)
+        setIsLoading(false)
       } catch (e) {
         console.error(e)
+        setIsLoading(false)
       }
     })()
   }, [isAuthenticated, getAccessTokenSilently, setToken])
