@@ -29,6 +29,7 @@
     "react-helmet": "^6.1.0",
     "react-hook-form": "^7.6.7",
     "react-intersection-observer": "^8.31.1",
+    "react-responsive-carousel": "^3.2.21",
     "use-query-params": "^1.2.2",
     "xml-js": "^1.6.11"
   },

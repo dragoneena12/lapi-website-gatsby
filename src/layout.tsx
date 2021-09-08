@@ -8,6 +8,7 @@
 import React, { useState } from "react"
 import { Auth0Provider } from "@auth0/auth0-react"
 import { Helmet } from "react-helmet"
+import "react-responsive-carousel/lib/styles/carousel.min.css"
 
 import { TokenContext } from "./Context"
 import Header from "./components/Header"

@@ -14,13 +14,17 @@
   --color-dark: #08192d;
   // Kachi
   --color-background: #0f2540;
+  --color-background-inverse: #fff;
   // Kon
   --color-grey: hsla(0, 0%, 100%, 0.5);
 
   --color-link: var(--color-warning);
+  --color-white: #fff;
+  --color-black: #000;
 
   --color-text: #fff;
   --color-text-white: #fff;
+  --color-text-inverse: #000;
 }
 
 *,

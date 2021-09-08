@@ -19,6 +19,14 @@ const Header: React.FC = () => (
       Characters
     </Link>
     <Link
+      to="/history/"
+      className={classes.Link}
+      activeClassName={classes.ActiveLink}
+      partiallyActive
+    >
+      History
+    </Link>
+    <Link
       to="/hotel/"
       className={classes.Link}
       activeClassName={classes.ActiveLink}
