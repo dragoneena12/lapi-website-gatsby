@@ -8,6 +8,7 @@ import {
   Modal,
   BackDrop,
   BackDropActive,
+  Description,
 } from "./HistoryItem.module.scss"
 
 type Props = {
@@ -86,7 +87,7 @@ const HistoryItem: React.FC<Props> = props => {
               </Carousel>
             )}
           </p>
-          {props.description}
+          <p className={Description}>{props.description}</p>
           {eventURL}
           <Button onClick={handleClose}>Close</Button>
         </div>
