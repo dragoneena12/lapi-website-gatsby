@@ -37,7 +37,6 @@ const HistoryItem: React.FC<Props> = props => {
   useEffect(() => {
     if (show) {
       const scrollY = window.scrollY
-      console.log(scrollY)
       document.body.style.position = "fixed"
       document.body.style.top = `-${scrollY}px`
     } else {
