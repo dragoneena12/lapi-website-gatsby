@@ -34,6 +34,14 @@ const Header: React.FC = () => (
     >
       Hotel
     </Link>
+    <Link
+      to="/games/"
+      className={classes.Link}
+      activeClassName={classes.ActiveLink}
+      partiallyActive
+    >
+      Games
+    </Link>
   </header>
 )
 
