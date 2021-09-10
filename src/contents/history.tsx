@@ -4,6 +4,142 @@ import * as tags from "../components/History/tags"
 
 const historyResource = [
   {
+    startDate: new Date(2021, 4, 29),
+    endDate: new Date(2021, 4, 29),
+    name: "Bick8",
+    eventURL: "https://bick.jp/",
+    imageURL: ["/img/history/Bick8.jpg"],
+    tags: [tags.TSUKIKUSA],
+    description: (
+      <div>
+        <p>
+          初の地元熊本イベント参加でした！森都心でやってた頃から行きたかったので行けてよかった！
+        </p>
+      </div>
+    ),
+  },
+
+  {
+    startDate: new Date(2021, 2, 27),
+    endDate: new Date(2021, 2, 28),
+    name: "Virtual Furry β",
+    eventURL: "https://sites.google.com/view/virtualfurry",
+    imageURL: [
+      "/img/history/VFbeta1.png",
+      "/img/history/VFbeta2.png",
+      "/img/history/VFbeta3.png",
+    ],
+    tags: [tags.VR],
+    description: (
+      <div>
+        <p>
+          ワールドを巡ったり、合わせて開催されていたバウワウナード集会に参加したりしました！
+        </p>
+      </div>
+    ),
+  },
+
+  {
+    startDate: new Date(2021, 0, 7),
+    endDate: new Date(2021, 0, 10),
+    name: "VR JMoF 2021",
+    eventURL: "https://vr.jmof.jp/",
+    imageURL: [
+      "/img/history/VRJMoF1.png",
+      "/img/history/VRJMoF2.png",
+      "/img/history/VRJMoF3.png",
+    ],
+    tags: [tags.VR],
+    description: (
+      <div>
+        <p>夢喰もダイアちゃんもいて本当にJMoF気分でした！</p>
+      </div>
+    ),
+  },
+
+  {
+    startDate: new Date(2020, 10, 21),
+    endDate: new Date(2020, 10, 21),
+    name: "けもケット9.5",
+    eventURL: "http://skypalette.jp/kemoket/",
+    imageURL: ["/img/history/kemoket9_5.JPG"],
+    tags: [tags.MARKET],
+    description: (
+      <div>
+        <p>コロナの影響下で感染症対策に万全を期しながらのけもケットでした。</p>
+        <p>
+          会場内のスペースが広くとられており、また入場人数も制限されていたのでめちゃくちゃ快適でした。
+        </p>
+      </div>
+    ),
+  },
+
+  {
+    startDate: new Date(2020, 10, 7),
+    endDate: new Date(2020, 10, 7),
+    name: "Kemocon 13",
+    eventURL: "https://www.kemocon.com/record/x-archive-kc13data/",
+    imageURL: ["/img/history/kemocon13-1.jpg", "/img/history/kemocon13-2.jpg"],
+    tags: [tags.TSUKIKUSA],
+    description: (
+      <div>
+        <p>コロナの影響で会場が変わり、まさかの木更津開催でした！</p>
+        <p>フェザドラちゃんVer2と会った！</p>
+        <p>翌日は鴨川シーワールドでシャチ汁を浴びて帰りました。</p>
+      </div>
+    ),
+  },
+
+  {
+    startDate: new Date(2020, 9, 21),
+    endDate: new Date(2020, 9, 25),
+    name: "K-LINE 『進化と/ /深化のケモノ展』",
+    eventURL: "https://kemono-line.jp/event.html",
+    imageURL: ["/img/history/k-line2020.jpg"],
+    tags: [],
+    description: (
+      <div>
+        <p>クラウドファンディングが実施されたK-LINE展でした！</p>
+        <p>クラファンリターンでルーフェンくんとツーショを撮りまくりました！</p>
+      </div>
+    ),
+  },
+
+  {
+    startDate: new Date(2020, 9, 3),
+    endDate: new Date(2020, 9, 4),
+    name: "VR JMoF 2021 Prologue",
+    eventURL: "https://vr.jmof.jp/",
+    imageURL: [
+      "/img/history/VRJMoFPrologue1.png",
+      "/img/history/VRJMoFPrologue2.png",
+      "/img/history/VRJMoFPrologue3.png",
+    ],
+    tags: [tags.VR],
+    description: (
+      <div>
+        <p>単独開催としては初？のVRJMoFでした！</p>
+        <p>フェザドラちゃんとたくさんイチャイチャした</p>
+      </div>
+    ),
+  },
+
+  {
+    startDate: new Date(2020, 7, 2),
+    endDate: new Date(2020, 7, 2),
+    name: "はつじゅー会 ～その８～",
+    eventURL: "https://twipla.jp/events/449828",
+    imageURL: ["/img/history/hatsuju8.jpg"],
+    tags: [],
+    description: (
+      <div>
+        <p>徹夜で死にかけながら参加しました！</p>
+        <p>フェザドラちゃんVersion1に遭遇</p>
+      </div>
+    ),
+  },
+
+  {
     startDate: new Date(2020, 2, 8),
     endDate: new Date(2020, 2, 8),
     name: "第1回ドラゴンフェスティバル",

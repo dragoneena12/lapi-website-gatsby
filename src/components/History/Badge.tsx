@@ -6,6 +6,7 @@ import {
   StaffBadge,
   OverseasBadge,
   OtherBadge,
+  VRBadge,
 } from "./Badge.module.scss"
 
 type Props = {
@@ -20,6 +21,8 @@ const Badge: React.FC<Props> = ({ value }) => {
       return <div className={TsukikusaBadge}>{value}</div>
     case tags.OVERSEAS:
       return <div className={OverseasBadge}>{value}</div>
+    case tags.VR:
+      return <div className={VRBadge}>{value}</div>
     default:
       return <div className={OtherBadge}>{value}</div>
   }
