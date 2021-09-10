@@ -8,6 +8,13 @@
   top: 0;
   z-index: 10;
   overflow-x: scroll;
+
+  // スクロールバーを表示させない
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display:none;
+  }
 }
 
 .TitleText {

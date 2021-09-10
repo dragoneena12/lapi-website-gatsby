@@ -46,4 +46,6 @@ body {
   box-sizing: border-box;
   background-color: var(--color-background);
   color: #fff;
+  width: 100%;
+  overflow-y: scroll;
 }

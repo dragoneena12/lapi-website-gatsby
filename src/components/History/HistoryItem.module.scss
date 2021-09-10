@@ -24,6 +24,12 @@
   background-color: var(--color-background);
   z-index: 100;
   padding: 12px;
+  // スクロールバーを表示させない
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display:none;
+  }
 }
 
 .BackDrop {
