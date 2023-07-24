@@ -20,9 +20,7 @@ const Footer: React.FC = () => (
         <div className={classes.GithubIcon} />
       </a>
     </div>
-    <p className={classes.Text}>
-      Copyright &copy; 2019-2021 Ruriiro(るりいろ).
-    </p>
+    <p className={classes.Text}>Copyright &copy; 2019-2023 るりいろ / Lapi.</p>
   </footer>
 )
 

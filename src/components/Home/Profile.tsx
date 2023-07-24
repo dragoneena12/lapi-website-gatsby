@@ -19,7 +19,7 @@ const Profile: React.FC = () => {
           placeholder="none"
         />
         <div className={classes.TextContainer}>
-          <h2>るりいろ(lapi-ruriiro)</h2>
+          <h2>るりいろ / lapi</h2>
           <p>Japanese Furry / Web Developer / Infrastructure Engineer</p>
           <Link
             to="https://twitter.com/dragoneena12"
