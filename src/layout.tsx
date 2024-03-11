@@ -7,7 +7,6 @@
 
 import React, { useState } from "react"
 import { Auth0Provider } from "@auth0/auth0-react"
-import { Helmet } from "react-helmet"
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 
 import { TokenContext } from "./Context"
@@ -32,13 +31,6 @@ const Layout: React.FC = ({ children }) => {
         useRefreshTokens={true}
         cacheLocation="localstorage"
       >
-        <Helmet>
-          <link rel="preconnect" href="https://fonts.gstatic.com" />
-          <link
-            href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap"
-            rel="stylesheet"
-          />
-        </Helmet>
         <div className={classes.layout}>
           <Header />
           <main>{children}</main>
