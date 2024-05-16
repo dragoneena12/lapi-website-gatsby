@@ -21,9 +21,9 @@ mutation editHotel(
     }
   ) {
     id
+    ownerID
     name
     location
-    owner
     carbonAwards
     fullereneAwards
     carbonNanotubeAwards

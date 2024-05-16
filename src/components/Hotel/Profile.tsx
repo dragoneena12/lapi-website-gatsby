@@ -3,7 +3,6 @@ import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import { User } from "@auth0/auth0-react"
 import { GraphQLClient } from "graphql-request"
-import { SemiCircle } from "progressbar.js"
 
 import { SpinnerLoader } from "../common/Spinner.module.scss"
 import { getSdk } from "../../generated/graphql"
@@ -78,16 +77,16 @@ const Profile: React.FC<Props> = ({ user }) => {
 
   useEffect(() => {
     if (stayCount !== undefined) {
-      const bar = new SemiCircle("#progressContainer", {
-        strokeWidth: 6,
-        easing: "easeInOut",
-        duration: 1400,
-        color: "#00aa90",
-        trailColor: "#fff",
-        trailWidth: 6,
-        svgStyle: null,
-      })
-      bar.animate(stayCount / 50)
+      // const bar = new SemiCircle("#progressContainer", {
+      //   strokeWidth: 6,
+      //   easing: "easeInOut",
+      //   duration: 1400,
+      //   color: "#00aa90",
+      //   trailColor: "#fff",
+      //   trailWidth: 6,
+      //   svgStyle: null,
+      // })
+      // bar.animate(stayCount / 50)
     }
   }, [stayCount])
 

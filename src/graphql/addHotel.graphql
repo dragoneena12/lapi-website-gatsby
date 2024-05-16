@@ -19,9 +19,9 @@ mutation addHotel(
     }
   ) {
     id
+    ownerID
     name
     location
-    owner
     carbonAwards
     fullereneAwards
     carbonNanotubeAwards
