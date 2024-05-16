@@ -4,3 +4,4 @@ package-lock.json
 public
 graphql.schema.json
 static/unity
+src/generated
