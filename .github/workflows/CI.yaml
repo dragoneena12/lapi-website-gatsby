@@ -7,7 +7,6 @@ jobs:
   test:
     runs-on: ubuntu-latest
     env:
-      GATSBY_ORIGIN: https://www.lapi.tokyo
       GATSBY_API_URL: https://api.lapi.tokyo/graphql
       GATSBY_AUTH_CLIENT_ID: kf3VdHdPiYSFlJhiBPDIj1cRDezM1Cjo
     steps:

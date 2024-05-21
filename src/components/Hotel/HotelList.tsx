@@ -28,7 +28,6 @@ type Props = {
 const HotelList: React.FC<Props> = ({ isAuthenticated, user }) => {
   const [hotels, setHotels] = useState<Partial<Hotel>[]>()
   const [checkedin, setCheckedin] = useState<boolean>(false)
-  const [checkedout, setCheckedout] = useState<boolean>(false)
   const [err, setErr] = useState<string>("")
   const { token } = useContext(TokenContext)
 
@@ -45,7 +44,7 @@ const HotelList: React.FC<Props> = ({ isAuthenticated, user }) => {
     })()
   }, [])
 
-  const checkin = (hotelId: string) => {
+  const checkin = (hotelID: string) => {
     const otp = window.prompt("ワンタイムパスワードを入力してください", "")
     if (otp === null) {
       return
@@ -59,36 +58,12 @@ const HotelList: React.FC<Props> = ({ isAuthenticated, user }) => {
       const sdk = getSdk(client)
       try {
         await sdk.checkin({
-          hotelId: hotelId,
+          hotelID: hotelID,
           otp: otp,
         })
         setCheckedin(true)
         setErr("")
-      } catch (e) {
-        setErr(e.response.errors[0].message)
-      }
-    })()
-  }
-  const checkout = (hotelId: string) => {
-    // const otp = window.prompt("ワンタイムパスワードを入力してください", "")
-    // if (otp === null) {
-    //   return
-    // }
-    ;(async () => {
-      const client = new GraphQLClient(API_BASE, {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      })
-      const sdk = getSdk(client)
-      try {
-        await sdk.checkout({
-          hotelId: hotelId,
-          otp: "",
-        })
-        setCheckedout(true)
-        setErr("")
-      } catch (e) {
+      } catch (e: any) {
         setErr(e.response.errors[0].message)
       }
     })()
@@ -112,22 +87,13 @@ const HotelList: React.FC<Props> = ({ isAuthenticated, user }) => {
             {isAuthenticated && (
               <div className={ButtonContainer}>
                 {checkedin && <p className={Success}>チェックインしました！</p>}
-                {checkedout && (
-                  <p className={Success}>チェックアウトしました！</p>
-                )}
-                {!checkedin && !checkedout && (
+                {!checkedin && (
                   <>
                     <button
                       className={Button}
                       onClick={() => checkin(hotel.id!)}
                     >
                       Check In
-                    </button>
-                    <button
-                      className={Button}
-                      onClick={() => checkout(hotel.id!)}
-                    >
-                      Check Out
                     </button>
                   </>
                 )}
@@ -138,7 +104,7 @@ const HotelList: React.FC<Props> = ({ isAuthenticated, user }) => {
               <Link to={"/hotel/detail?id=" + hotel.id} className={Button}>
                 特典内容を見る
               </Link>
-              {user?.sub === hotel.owner && (
+              {user?.sub === hotel.ownerID && (
                 <>
                   <Link to={"/hotel/edit?id=" + hotel.id} className={Button}>
                     ホテル情報編集

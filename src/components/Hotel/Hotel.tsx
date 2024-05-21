@@ -18,7 +18,10 @@ const Hotel: React.FC = () => {
     ;(async () => {
       try {
         const token = await getAccessTokenSilently({
-          audience: "https://api.lapi.tokyo/graphql",
+          authorizationParams: {
+            redirect_uri: origin + "/hotel/",
+            audience: "https://api.lapi.tokyo/graphql",
+          },
         })
         setToken(token)
         setIsLoading(false)
@@ -27,8 +30,7 @@ const Hotel: React.FC = () => {
         setIsLoading(false)
       }
     })()
-  }, [isAuthenticated, getAccessTokenSilently, setToken])
-
+  }, [])
   return (
     <div className={Container}>
       <Heading>Hotel System</Heading>

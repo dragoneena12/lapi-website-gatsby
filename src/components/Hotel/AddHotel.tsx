@@ -98,7 +98,7 @@ const AddHotel: React.FC<Props> = ({ edit, hotel }) => {
         setIsLoading(false)
         setResult("正常に登録しました！")
         setErr("")
-      } catch (e) {
+      } catch (e: any) {
         setIsLoading(false)
         setResult("")
         setErr(e.response.errors[0].message)

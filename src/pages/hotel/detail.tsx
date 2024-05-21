@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { GraphQLClient } from "graphql-request"
-import { useQueryParam, NumberParam } from "use-query-params"
+import { useQueryParam, StringParam } from "use-query-params"
 
 import { getSdk, Hotel } from "../../generated/graphql"
 import SEO from "../../components/seo"
@@ -11,7 +11,7 @@ const API_BASE = process.env.GATSBY_API_URL || ""
 
 const HotelDetailPage: React.FC = () => {
   const [hotel, setHotel] = useState<Hotel | undefined>(undefined)
-  const [id] = useQueryParam("id", NumberParam)
+  const [id] = useQueryParam("id", StringParam)
 
   useEffect(() => {
     ;(async () => {

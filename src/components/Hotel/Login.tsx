@@ -7,7 +7,17 @@ const Login: React.FC = () => {
   const { loginWithRedirect } = useAuth0()
 
   return (
-    <button className={Button} onClick={() => loginWithRedirect()}>
+    <button
+      className={Button}
+      onClick={() =>
+        loginWithRedirect({
+          authorizationParams: {
+            redirect_uri: origin + "/hotel/",
+            audience: "https://api.lapi.tokyo/graphql",
+          },
+        })
+      }
+    >
       Login / SignUp
     </button>
   )

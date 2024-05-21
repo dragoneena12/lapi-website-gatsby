@@ -13,12 +13,9 @@ const StayHistory: React.FC<{ stays: Partial<Stay>[] }> = ({ stays }) => (
       <div className={BoxContainer}>
         {stays.map(stay => (
           <div className={Box} key={stay.id}>
-            <h2>{stay.hotel?.name}</h2>
+            <h2>{stay.hotelID}</h2>
             {/* <p>{`宿泊ID：${stay.id}`}</p> */}
-            <p>{`IN: ${format(new Date(stay.checkin), "Yo MMM do eeee", {
-              locale: ja,
-            })}`}</p>
-            <p>{`OUT: ${format(new Date(stay.checkout), "Yo MMM do eeee", {
+            <p>{`${format(new Date(stay.checkinTime), "Yo MMM do eeee", {
               locale: ja,
             })}`}</p>
           </div>

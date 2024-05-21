@@ -15,7 +15,6 @@ import Footer from "./components/Footer/Footer"
 import * as classes from "./layout.module.scss"
 import "./layout.scss"
 
-const origin = process.env.GATSBY_ORIGIN
 const authClientId = process.env.GATSBY_AUTH_CLIENT_ID || ""
 
 const Layout: React.FC = ({ children }) => {
@@ -23,14 +22,7 @@ const Layout: React.FC = ({ children }) => {
 
   return (
     <TokenContext.Provider value={{ token, setToken }}>
-      <Auth0Provider
-        domain="lapi.us.auth0.com"
-        clientId={authClientId}
-        redirectUri={origin + "/hotel/"}
-        audience="https://api.lapi.tokyo/graphql"
-        useRefreshTokens={true}
-        cacheLocation="localstorage"
-      >
+      <Auth0Provider domain="lapi.us.auth0.com" clientId={authClientId}>
         <div className={classes.layout}>
           <Header />
           <main>{children}</main>

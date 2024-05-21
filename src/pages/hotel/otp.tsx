@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react"
 import { GraphQLClient } from "graphql-request"
-import { useQueryParam, NumberParam } from "use-query-params"
+import { useQueryParam, StringParam } from "use-query-params"
 
 import { TokenContext } from "../../Context"
 import { getSdk, HotelKey } from "../../generated/graphql"
@@ -12,7 +12,7 @@ const API_BASE = process.env.GATSBY_API_URL || ""
 
 const OneTimePasswordPage: React.FC = () => {
   const [hotelKey, setHotelKey] = useState<HotelKey | undefined>(undefined)
-  const [id] = useQueryParam("id", NumberParam)
+  const [id] = useQueryParam("id", StringParam)
   const { token } = useContext(TokenContext)
 
   useEffect(() => {

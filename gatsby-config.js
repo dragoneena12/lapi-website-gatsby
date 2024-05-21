@@ -1,3 +1,7 @@
+require("dotenv").config({ // eslint-disable-line @typescript-eslint/no-var-requires
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `lapi.tokyo`,
