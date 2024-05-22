@@ -33,6 +33,9 @@ jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
+    env:
+      GATSBY_API_URL: https://api.lapi.tokyo/graphql
+      GATSBY_AUTH_CLIENT_ID: kf3VdHdPiYSFlJhiBPDIj1cRDezM1Cjo
     steps:
       - name: Checkout
         uses: actions/checkout@v3
